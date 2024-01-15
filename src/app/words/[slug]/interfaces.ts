@@ -1,5 +1,5 @@
 export interface IWordProps {
     readonly params: {
-        readonly word: string;
+        readonly slug: string;
     };
 }

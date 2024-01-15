@@ -1,13 +1,16 @@
-export default function Home() {
+import { Word } from "../components/Word";
+import { getNlastWords } from "../utils/words";
+
+export default async function Home() {
+    const lastWords = await getNlastWords(5);
+
     return (
-        <div className="bg-[#facc15] border-4 border-[#000] rounded-lg p-6 drop-shadow-3xl">
-            <div className="flex flex-col justify-between items-start gap-4">
-                <p className="mt-4 outfit text-2xl md:text-5xl lg:text-7xl">
-                    <a className="" target="_blank">
-                        Title
-                    </a>
-                </p>
-            </div>
-        </div>
+        <>
+            {lastWords.map((word) => (
+                <div key={word.slug} className="mb-6">
+                    <Word word={word} />
+                </div>
+            ))}
+        </>
     );
 }

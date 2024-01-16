@@ -26,6 +26,14 @@ export const getWords = async (slugs: string[]): Promise<IWord[]> => {
     return sortWordsByDate(words);
 };
 
+export const getAllWords = async (): Promise<IWord[]> => {
+    const wordNames = await fs.readdir(wordsFolderPath);
+
+    const slugs = wordNames.map((wordName) => removeExtension(wordName));
+
+    return await getWords(slugs);
+};
+
 export const getNrandomWords = async (n: number): Promise<IWord[]> => {
     const wordNames = await fs.readdir(wordsFolderPath);
 
@@ -35,6 +43,10 @@ export const getNrandomWords = async (n: number): Promise<IWord[]> => {
         .map((wordName) => removeExtension(wordName));
 
     return await getWords(randomNWordNamesWithoutExtension);
+};
+
+export const getRandomWord = async (): Promise<IWord> => {
+    return (await getNrandomWords(1))[0];
 };
 
 export const getNlastWords = async (n: number): Promise<IWord[]> => {

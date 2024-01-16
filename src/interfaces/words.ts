@@ -4,7 +4,6 @@ export interface IWordFrontmatter {
     readonly title: string;
     readonly pubDate: string;
     readonly author: string;
-    readonly featured?: boolean;
 }
 
 export interface IWord {

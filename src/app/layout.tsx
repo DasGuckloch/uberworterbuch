@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Layout } from "../components/Layout";
-import { Header } from "../components/Header";
+import "../utils/dayjs";
 
 interface IRootLayoutProps {
     readonly children: React.ReactNode;

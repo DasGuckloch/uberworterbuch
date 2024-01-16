@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { IWordProps } from "./interfaces";
-import { DATE_FORMAT } from "../../constants/date";
+import { DATE_FORMAT_MDX, DATE_FORMAT_PUBLIC } from "../../constants/date";
 
 export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;
@@ -14,7 +14,9 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                 {content}
             </div>
             <div className="mt-4 text-xs">
-                {dayjs(frontmatter.pubDate, DATE_FORMAT).format("MMMM, D YYYY")}
+                {dayjs(frontmatter.pubDate, DATE_FORMAT_MDX).format(
+                    DATE_FORMAT_PUBLIC
+                )}
             </div>
         </div>
     );

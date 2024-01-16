@@ -3,10 +3,10 @@ import { IWord, IWordFrontmatter } from "../interfaces/words";
 import path from "path";
 import { promises as fs } from "fs";
 import dayjs from "dayjs";
-import { DATE_FORMAT } from "../constants/date";
+import { DATE_FORMAT_MDX } from "../constants/date";
 
 const WORDS_FOLDER_NAME = "words";
-const WORDS_EXTENSION = ".mdx";
+const WORDS_EXTENSION = "mdx";
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
 export const getWord = async (slug: string): Promise<IWord> => {
@@ -46,7 +46,7 @@ export const getNlastWords = async (n: number): Promise<IWord[]> => {
 };
 
 const getWordPath = (slug: string): string => {
-    return path.join(wordsFolderPath, `${slug}.mdx`);
+    return path.join(wordsFolderPath, `${slug}.${WORDS_EXTENSION}`);
 };
 
 const getWordMarkdown = async (path: string): Promise<string> => {
@@ -68,10 +68,10 @@ const removeExtension = (wordName: string): string => {
 
 const sortWordsByDate = (words: IWord[]): IWord[] => {
     return words.sort((a, b) =>
-        dayjs(a.frontmatter.pubDate, DATE_FORMAT).isAfter(
-            dayjs(b.frontmatter.pubDate, DATE_FORMAT)
+        dayjs(a.frontmatter.pubDate, DATE_FORMAT_MDX).isAfter(
+            dayjs(b.frontmatter.pubDate, DATE_FORMAT_MDX)
         )
-            ? 1
-            : -1
+            ? -1
+            : 1
     );
 };

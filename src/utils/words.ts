@@ -4,6 +4,7 @@ import path from "path";
 import { promises as fs } from "fs";
 import dayjs from "dayjs";
 import { DATE_FORMAT_MDX } from "../constants/date";
+import { notFound } from "next/navigation";
 
 const WORDS_FOLDER_NAME = "words";
 const WORDS_EXTENSION = "mdx";
@@ -12,6 +13,11 @@ const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 export const getWord = async (slug: string): Promise<IWord> => {
     const wordPath = getWordPath(slug);
     const markdown = await getWordMarkdown(wordPath);
+
+    if (!markdown) {
+        return notFound();
+    }
+
     const word = await compileWord(markdown);
 
     return {
@@ -61,8 +67,16 @@ const getWordPath = (slug: string): string => {
     return path.join(wordsFolderPath, `${slug}.${WORDS_EXTENSION}`);
 };
 
-const getWordMarkdown = async (path: string): Promise<string> => {
-    return await fs.readFile(path, "utf8");
+const getWordMarkdown = async (path: string): Promise<string | null> => {
+    let file;
+
+    try {
+        file = await fs.readFile(path, "utf8");
+    } catch (error) {
+        return null;
+    }
+
+    return file;
 };
 
 const compileWord = async (

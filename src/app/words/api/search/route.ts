@@ -7,14 +7,14 @@ export async function GET(request: NextRequest) {
 
     if (!searchValue) {
         return Response.json({
-            searchItems: [],
+            words: [],
         });
     }
 
     const words = await getAllWords();
 
     return Response.json({
-        searchItems: words.filter(({ frontmatter }) =>
+        words: words.filter(({ frontmatter }) =>
             frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
         ),
     });

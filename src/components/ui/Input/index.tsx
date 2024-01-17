@@ -2,29 +2,24 @@
 import Image from "next/image";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import ShuffleIconSvg from "./assets/shuffle.svg";
 import { RouteEnum } from "../../../enums/route";
 import { IWord } from "../../../interfaces/words";
+import { getRandomWordSlugRequest, searchWordsRequest } from "../../../api";
 
 const GET_SEARCH_ITEMS_THROTTLE_MS = 300;
 
-const getSearchItems = async (
+const searchWords = async (
     searchValue: string,
-    setSearchItems: (searchItems: IWord[]) => void
+    setWords: (words: IWord[]) => void
 ): Promise<void> => {
-    const {
-        data: { searchItems },
-    } = await axios.get(
-        `/${RouteEnum.WORDS}/api/search-items?search-value=${searchValue}`
-    );
-
-    setSearchItems(searchItems);
+    const { words } = await searchWordsRequest(searchValue);
+    setWords(words);
 };
 
-const getSearchItemsDebounced = debounce(
-    getSearchItems,
+const searchWordsDebounced = debounce(
+    searchWords,
     GET_SEARCH_ITEMS_THROTTLE_MS
 );
 
@@ -32,14 +27,14 @@ export const Input = () => {
     const router = useRouter();
 
     const [searchValue, setSearchValue] = useState("");
-    const [searchItems, setSearchItems] = useState<IWord[]>([]);
+    const [words, setWords] = useState<IWord[]>([]);
 
     useEffect(() => {
         if (!searchValue) {
-            setSearchItems([]);
+            setWords([]);
         }
 
-        getSearchItemsDebounced(searchValue, setSearchItems);
+        searchWordsDebounced(searchValue, setWords);
     }, [searchValue]);
 
     return (
@@ -56,32 +51,29 @@ export const Input = () => {
                 className="w-6 absolute right-3 top-0 bottom-0 m-auto cursor-pointer"
                 onClick={async () => {
                     setSearchValue("");
-                    setSearchItems([]);
+                    setWords([]);
 
-                    const {
-                        data: { slug },
-                    } = await axios.get(`/${RouteEnum.WORDS}/api/random`);
-
+                    const { slug } = await getRandomWordSlugRequest();
                     router.push(`/${RouteEnum.WORDS}/${slug}`);
                 }}
             />
-            {!!searchItems.length && (
-                <div className="absolute shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-[#000] bg-[#60a5fa] box-border z-10 overflow-hidden">
-                    {searchItems.map((searchItem) => {
+            {!!words.length && (
+                <div className="absolute shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-[#000] bg-[#60a5fa] box-border z-10 overflow-hidden">
+                    {words.map((word) => {
                         return (
                             <div
-                                key={searchItem.slug}
+                                key={word.slug}
                                 className="p-3 bg-[#60a5fa] hover:bg-[#6093fa] cursor-pointer"
                                 onClick={() => {
                                     setSearchValue("");
-                                    setSearchItems([]);
+                                    setWords([]);
 
                                     router.push(
-                                        `/${RouteEnum.WORDS}/${searchItem.slug}`
+                                        `/${RouteEnum.WORDS}/${word.slug}`
                                     );
                                 }}
                             >
-                                <div>{searchItem.frontmatter.title}</div>
+                                <div>{word.frontmatter.title}</div>
                             </div>
                         );
                     })}

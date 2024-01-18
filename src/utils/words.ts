@@ -1,15 +1,15 @@
-import path from "path";
-import { promises as fs } from "fs";
+import path from 'path';
+import { promises as fs } from 'fs';
 
-import { CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
-import dayjs from "dayjs";
-import { notFound } from "next/navigation";
+import { CompileMDXResult, compileMDX } from 'next-mdx-remote/rsc';
+import dayjs from 'dayjs';
+import { notFound } from 'next/navigation';
 
-import { IWord, IWordFrontmatter } from "../interfaces/words";
-import { DATE_FORMAT_MDX } from "../constants/date";
+import { IWord, IWordFrontmatter } from '../interfaces/words';
+import { DATE_FORMAT_MDX } from '../constants/date';
 
-const WORDS_FOLDER_NAME = "words";
-const WORDS_EXTENSION = "mdx";
+const WORDS_FOLDER_NAME = 'words';
+const WORDS_EXTENSION = 'mdx';
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
 export const getWord = async (slug: string): Promise<IWord> => {
@@ -53,8 +53,14 @@ export const getNrandomWords = async (n: number): Promise<IWord[]> => {
     return await getWords(randomNWordNamesWithoutExtension);
 };
 
-export const getRandomWord = async (): Promise<IWord> => {
-    return (await getNrandomWords(1))[0];
+export const getRandomWord = async (slug?: string | null): Promise<IWord> => {
+    const randomWord = (await getNrandomWords(1))[0];
+
+    if (slug && randomWord.slug === slug) {
+        return await getRandomWord(slug);
+    }
+
+    return randomWord;
 };
 
 export const getNlastWords = async (n: number): Promise<IWord[]> => {
@@ -73,7 +79,7 @@ const getWordMarkdown = async (path: string): Promise<string | null> => {
     let file;
 
     try {
-        file = await fs.readFile(path, "utf8");
+        file = await fs.readFile(path, 'utf8');
     } catch (error) {
         return null;
     }
@@ -91,7 +97,7 @@ const compileWord = async (
 };
 
 const removeExtension = (wordName: string): string => {
-    return wordName.split(".mdx")[0];
+    return wordName.split('.mdx')[0];
 };
 
 const sortWordsByDate = (words: IWord[]): IWord[] => {

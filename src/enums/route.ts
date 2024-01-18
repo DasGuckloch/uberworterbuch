@@ -1,4 +1,4 @@
 export enum RouteEnum {
-    INDEX = "/",
-    WORDS = "words",
+    INDEX = '/',
+    WORDS = 'words',
 }

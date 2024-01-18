@@ -1,10 +1,10 @@
-const TITLE = "Überwörterbuch";
-const DESCRIPTION = "Das urbanste deutsche Wörterbuch";
-const DOMAIN = "https://uberworterbuch.de";
-const LANGUAGE_CODE = "de-de";
+const TITLE = 'Überwörterbuch';
+const DESCRIPTION = 'Das urbanste deutsche Wörterbuch';
+const DOMAIN = 'https://uberworterbuch.de';
+const LANGUAGE_CODE = 'de-de';
 const OG_IMAGE_URL =
-    "https://github.com/DasGuckloch/uberworterbuch/blob/main/images/social_gh.png?raw=true";
-export const RSS_TYPE = "application/atom+xml";
+    'https://github.com/DasGuckloch/uberworterbuch/blob/main/images/social_gh.png?raw=true';
+export const RSS_TYPE = 'application/atom+xml';
 
 export const METADATA = {
     title: TITLE,
@@ -12,13 +12,13 @@ export const METADATA = {
     domain: DOMAIN,
     language_code: LANGUAGE_CODE,
     keywords: [
-        "Dictionary",
-        "Wörterbuch",
-        "Woerterbuch",
-        "Überwörterbuch",
-        "Uberworterbuch",
-        "Ueberwoerterbuch",
-        "Uberdictionary",
+        'Dictionary',
+        'Wörterbuch',
+        'Woerterbuch',
+        'Überwörterbuch',
+        'Uberworterbuch',
+        'Ueberwoerterbuch',
+        'Uberdictionary',
     ],
     openGraph: {
         title: TITLE,
@@ -33,14 +33,14 @@ export const METADATA = {
             },
         ],
         locale: LANGUAGE_CODE,
-        type: "website",
+        type: 'website',
     },
     twitter: {
-        card: "summary_large_image",
+        card: 'summary_large_image',
         title: TITLE,
         description: DESCRIPTION,
-        site: "@uberworterbuch",
-        creator: "@uberworterbuch",
+        site: '@uberworterbuch',
+        creator: '@uberworterbuch',
         images: [OG_IMAGE_URL],
     },
     alternates: {

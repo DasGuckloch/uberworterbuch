@@ -1,14 +1,17 @@
-"use client";
-import Image from "next/image";
-import debounce from "lodash.debounce";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+'use client';
+import Image from 'next/image';
+import debounce from 'lodash.debounce';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
-import { RouteEnum } from "../../../enums/route";
-import { IWord } from "../../../interfaces/words";
-import { getRandomWordSlugRequest, searchWordsRequest } from "../../../api";
+import { RouteEnum } from '../../../enums/route';
+import { IWord } from '../../../interfaces/words';
+import {
+    getRandomWordSlugRequest,
+    searchWordsRequest,
+} from '../../../client-api';
 
-import ShuffleIconSvg from "./assets/shuffle.svg";
+import ShuffleIconSvg from './assets/shuffle.svg';
 
 const GET_SEARCH_ITEMS_THROTTLE_MS = 300;
 
@@ -27,8 +30,9 @@ const searchWordsDebounced = debounce(
 
 export const Input = () => {
     const router = useRouter();
+    const params = useParams<{ slug?: string }>();
 
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState('');
     const [words, setWords] = useState<IWord[]>([]);
 
     useEffect(() => {
@@ -52,11 +56,13 @@ export const Input = () => {
                 alt="zufällig"
                 className="w-6 absolute right-3 top-0 bottom-0 m-auto cursor-pointer"
                 onClick={async () => {
-                    setSearchValue("");
+                    setSearchValue('');
                     setWords([]);
 
-                    const { slug } = await getRandomWordSlugRequest();
-                    router.push(`/${RouteEnum.WORDS}/${slug}`);
+                    const { slug: randomSlug } = await getRandomWordSlugRequest(
+                        params.slug
+                    );
+                    router.push(`/${RouteEnum.WORDS}/${randomSlug}`);
                 }}
             />
             {!!words.length && (
@@ -67,7 +73,7 @@ export const Input = () => {
                                 key={word.slug}
                                 className="p-3 bg-[#60a5fa] hover:bg-[#6093fa] cursor-pointer"
                                 onClick={() => {
-                                    setSearchValue("");
+                                    setSearchValue('');
                                     setWords([]);
 
                                     router.push(

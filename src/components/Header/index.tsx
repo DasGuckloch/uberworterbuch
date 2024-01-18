@@ -1,6 +1,6 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-import { Input } from "../ui/Input";
+import { Input } from '../ui/Input';
 
 export const Header: React.FC = () => {
     return (

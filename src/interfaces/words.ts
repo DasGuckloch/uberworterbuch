@@ -1,4 +1,4 @@
-import { JSXElementConstructor, ReactElement } from "react";
+import { JSXElementConstructor, ReactElement } from 'react';
 
 export interface IWordFrontmatter {
     readonly title: string;

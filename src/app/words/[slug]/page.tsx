@@ -1,11 +1,11 @@
-import { Metadata } from "next";
+import { Metadata } from 'next';
 
-import { METADATA } from "../../../constants/metadata";
-import { Word } from "../../../components/Word";
-import { getWord } from "../../../utils/words";
-import { RouteEnum } from "../../../enums/route";
+import { METADATA } from '../../../constants/metadata';
+import { Word } from '../../../components/Word';
+import { getWord } from '../../../utils/words';
+import { RouteEnum } from '../../../enums/route';
 
-import { IWordProps } from "./interfaces";
+import { IWordProps } from './interfaces';
 
 export default async function IWordProps({ params }: IWordProps) {
     const word = await getWord(params.slug);

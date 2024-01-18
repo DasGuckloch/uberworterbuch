@@ -1,11 +1,11 @@
-import RSS from "rss";
-import dayjs from "dayjs";
+import RSS from 'rss';
+import dayjs from 'dayjs';
 
-import { METADATA, RSS_TYPE } from "../../constants/metadata";
-import { getAllWords } from "../../utils/words";
-import { RouteEnum } from "../../enums/route";
-import "../../utils/dayjs";
-import { DATE_FORMAT_MDX } from "../../constants/date";
+import { METADATA, RSS_TYPE } from '../../constants/metadata';
+import { getAllWords } from '../../utils/words';
+import { RouteEnum } from '../../enums/route';
+import '../../utils/dayjs';
+import { DATE_FORMAT_MDX } from '../../constants/date';
 
 export async function GET() {
     const feed = new RSS({
@@ -30,7 +30,7 @@ export async function GET() {
 
     return new Response(feed.xml({ indent: true }), {
         headers: {
-            "Content-Type": `${RSS_TYPE}; charset=utf-8`,
+            'Content-Type': `${RSS_TYPE}; charset=utf-8`,
         },
     });
 }

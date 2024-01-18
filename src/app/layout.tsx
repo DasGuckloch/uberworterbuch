@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 
-import { Inter } from "next/font/google";
+import { Inter } from 'next/font/google';
 
-import "./globals.css";
-import { Layout } from "../components/Layout";
-import "../utils/dayjs";
-import { METADATA } from "../constants/metadata";
+import './globals.css';
+import { Layout } from '../components/Layout';
+import '../utils/dayjs';
+import { METADATA } from '../constants/metadata';
 
 interface IRootLayoutProps {
     readonly children: React.ReactNode;
 }
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: {

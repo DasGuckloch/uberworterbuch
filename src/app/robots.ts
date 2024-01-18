@@ -1,12 +1,12 @@
-import { MetadataRoute } from "next";
+import { MetadataRoute } from 'next';
 
-import { METADATA } from "../constants/metadata";
+import { METADATA } from '../constants/metadata';
 
 export default function robots(): MetadataRoute.Robots {
     return {
         rules: {
-            userAgent: "*",
-            allow: "/",
+            userAgent: '*',
+            allow: '/',
         },
         sitemap: `${METADATA.domain}/sitemap.xml`,
     };

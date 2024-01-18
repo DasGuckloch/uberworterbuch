@@ -1,7 +1,7 @@
 import RSS from "rss";
 import dayjs from "dayjs";
 
-import { METADATA } from "../../constants/metadata";
+import { METADATA, RSS_TYPE } from "../../constants/metadata";
 import { getAllWords } from "../../utils/words";
 import { RouteEnum } from "../../enums/route";
 import "../../utils/dayjs";
@@ -30,7 +30,7 @@ export async function GET() {
 
     return new Response(feed.xml({ indent: true }), {
         headers: {
-            "Content-Type": "application/atom+xml; charset=utf-8",
+            "Content-Type": `${RSS_TYPE}; charset=utf-8`,
         },
     });
 }

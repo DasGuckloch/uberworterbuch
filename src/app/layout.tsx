@@ -14,8 +14,14 @@ interface IRootLayoutProps {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: METADATA.title,
+    title: {
+        template: `%s | ${METADATA.title}`,
+        default: METADATA.title,
+    },
     description: METADATA.description,
+    keywords: METADATA.keywords,
+    openGraph: METADATA.openGraph,
+    twitter: METADATA.twitter,
 };
 
 export default function RootLayout({ children }: IRootLayoutProps) {

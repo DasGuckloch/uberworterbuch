@@ -1,7 +1,7 @@
 # Überwörterbuch
 
 <p align="center">
-  <a href="https://www.uberworterbuch.de/" target="_blank"><img src="https://github.com/DasGuckloch/uberworterbuch/blob/main/images/social_gh.png?raw=true" alt="Überwörterbuch logo" /></a>
+  <a href="https://www.uberworterbuch.de/" target="_blank"><img src="https://github.com/DasGuckloch/uberworterbuch/blob/main/images/social_gh.png?raw=true" alt="Überwörterbuch logo" width="480" /></a>
 </p>
 <p align="center">
     <b>Das urbanste deutsche Wörterbuch!</b>

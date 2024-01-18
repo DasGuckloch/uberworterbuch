@@ -1,6 +1,11 @@
-# Überwörterbuch
+# [Überwörterbuch](https://www.uberworterbuch.de/)
 
-**Das urbanste deutsche Wörterbuch!**
+<p align="center">
+  <a href="https://www.uberworterbuch.de/" target="_blank"><img src="https://github.com/DasGuckloch/uberworterbuch/blob/main/images/social_gh.png?raw=true" alt="Überwörterbuch logo" /></a>
+</p>
+<p align="center">
+    <b>Das urbanste deutsche Wörterbuch!</b>
+</p>
 
 ## Adding words
 

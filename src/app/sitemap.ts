@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+
 import { getAllWords } from "../utils/words";
 import { RouteEnum } from "../enums/route";
 import { METADATA } from "../constants/metadata";

@@ -1,8 +1,9 @@
 import RSS from "rss";
+import dayjs from "dayjs";
+
 import { METADATA } from "../../constants/metadata";
 import { getAllWords } from "../../utils/words";
 import { RouteEnum } from "../../enums/route";
-import dayjs from "dayjs";
 import "../../utils/dayjs";
 import { DATE_FORMAT_MDX } from "../../constants/date";
 

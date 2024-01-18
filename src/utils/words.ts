@@ -1,10 +1,12 @@
-import { CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
-import { IWord, IWordFrontmatter } from "../interfaces/words";
 import path from "path";
 import { promises as fs } from "fs";
+
+import { CompileMDXResult, compileMDX } from "next-mdx-remote/rsc";
 import dayjs from "dayjs";
-import { DATE_FORMAT_MDX } from "../constants/date";
 import { notFound } from "next/navigation";
+
+import { IWord, IWordFrontmatter } from "../interfaces/words";
+import { DATE_FORMAT_MDX } from "../constants/date";
 
 const WORDS_FOLDER_NAME = "words";
 const WORDS_EXTENSION = "mdx";

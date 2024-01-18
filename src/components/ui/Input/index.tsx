@@ -3,10 +3,12 @@ import Image from "next/image";
 import debounce from "lodash.debounce";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import ShuffleIconSvg from "./assets/shuffle.svg";
+
 import { RouteEnum } from "../../../enums/route";
 import { IWord } from "../../../interfaces/words";
 import { getRandomWordSlugRequest, searchWordsRequest } from "../../../api";
+
+import ShuffleIconSvg from "./assets/shuffle.svg";
 
 const GET_SEARCH_ITEMS_THROTTLE_MS = 300;
 

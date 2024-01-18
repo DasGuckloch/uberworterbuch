@@ -1,4 +1,5 @@
 import { Header } from "../Header";
+
 import { ILayoutProps } from "./interfaces";
 
 export const Layout: React.FC<ILayoutProps> = ({ children }) => {

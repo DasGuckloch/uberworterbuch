@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+
 import { METADATA } from "../constants/metadata";
 
 export default function robots(): MetadataRoute.Robots {

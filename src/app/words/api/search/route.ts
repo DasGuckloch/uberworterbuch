@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+
 import { getAllWords } from "../../../../utils/words";
 
 export async function GET(request: NextRequest) {

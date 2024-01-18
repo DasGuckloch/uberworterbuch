@@ -1,6 +1,8 @@
 import dayjs from "dayjs";
-import { IWordProps } from "./interfaces";
+
 import { DATE_FORMAT_MDX, DATE_FORMAT_PUBLIC } from "../../constants/date";
+
+import { IWordProps } from "./interfaces";
 
 export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Layout } from "../components/Layout";
 import "../utils/dayjs";
+import { METADATA } from "../constants/metadata";
 
 interface IRootLayoutProps {
     readonly children: React.ReactNode;
@@ -11,13 +12,13 @@ interface IRootLayoutProps {
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    title: "Überwörterbuch",
-    description: "Das urbanste deutsche Wörterbuch",
+    title: METADATA.title,
+    description: METADATA.description,
 };
 
 export default function RootLayout({ children }: IRootLayoutProps) {
     return (
-        <html lang="de">
+        <html lang={METADATA.language_code}>
             <body className={inter.className}>
                 <Layout>{children}</Layout>
             </body>

@@ -11,6 +11,9 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                 <p className="mt-4 outfit text-2xl md:text-5xl lg:text-7xl">
                     <a href={`/words/${slug}`}>{frontmatter.title}</a>
                 </p>
+                <p>
+                    <strong>{frontmatter.description}</strong>
+                </p>
                 {content}
             </div>
             <div className="mt-4 text-xs">

@@ -2,6 +2,7 @@ import { JSXElementConstructor, ReactElement } from "react";
 
 export interface IWordFrontmatter {
     readonly title: string;
+    readonly description: string;
     readonly pubDate: string;
     readonly author: string;
 }

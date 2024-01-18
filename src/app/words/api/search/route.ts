@@ -13,9 +13,17 @@ export async function GET(request: NextRequest) {
 
     const words = await getAllWords();
 
+    const searchValueLowerCase = searchValue.toLowerCase();
+
     return Response.json({
-        words: words.filter(({ frontmatter }) =>
-            frontmatter.title.toLowerCase().includes(searchValue.toLowerCase())
+        words: words.filter(
+            ({ frontmatter }) =>
+                frontmatter.title
+                    .toLowerCase()
+                    .includes(searchValueLowerCase) ||
+                frontmatter.description
+                    .toLowerCase()
+                    .includes(searchValueLowerCase)
         ),
     });
 }

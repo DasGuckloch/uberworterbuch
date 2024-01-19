@@ -11,7 +11,7 @@ on:
                 required: true
                 default: ''
 jobs:
-    deploy:
+    add:
         runs-on: ubuntu-latest
         outputs:
             transformed-word: ${{ steps.transform.outputs.result }}

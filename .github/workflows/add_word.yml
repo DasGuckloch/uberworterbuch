@@ -26,6 +26,10 @@ jobs:
                   result=$(transformWord "${{ github.event.inputs.word }}")
                   echo "::set-output name=result::$result"
 
+            - name: Install
+              run: |
+                  npm ci
+
             - name: Add word
               run: |
                   npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}"

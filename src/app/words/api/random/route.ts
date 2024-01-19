@@ -1,4 +1,5 @@
 import { NextRequest } from 'next/server';
+
 import { getRandomWord } from '../../../../utils/words';
 
 export const dynamic = 'force-dynamic';

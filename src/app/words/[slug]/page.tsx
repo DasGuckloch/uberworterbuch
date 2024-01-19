@@ -26,11 +26,13 @@ export async function generateMetadata({
             title: `${word.frontmatter.title} | ${METADATA.title}`,
             description: word.frontmatter.description,
             url: `${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}`,
+            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}/og`],
         },
         twitter: {
             ...METADATA.twitter,
             title: `${word.frontmatter.title} | ${METADATA.title}`,
             description: word.frontmatter.description,
+            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}/og`],
         },
     };
 }

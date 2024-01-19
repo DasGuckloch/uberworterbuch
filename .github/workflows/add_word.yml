@@ -10,6 +10,10 @@ on:
                 description: 'Description of the word.'
                 required: true
                 default: ''
+            author:
+                description: 'Your name.'
+                required: true
+                default: ''
 jobs:
     add:
         runs-on: ubuntu-latest
@@ -23,7 +27,7 @@ jobs:
 
             - name: Add word
               run: |
-                  npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}" "${{ github.actor }}"
+                  npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}" "${{ github.event.inputs.author }}"
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v5

@@ -22,7 +22,7 @@ jobs:
             - name: Transform Word
               id: transform
               run: |
-                  transformWord() { echo "$1" | sed -e 's/ /-/g' -e 'y/ÜüÄäÖö/uuaao/'; }
+                  transformWord() { echo "$1" | sed -e 's/ /-/g' -e 'y/ÜÄÖüäö/uuaaoo/'; }
                   result=$(transformWord "${{ github.event.inputs.word }}")
                   echo "::set-output name=result::$result"
 

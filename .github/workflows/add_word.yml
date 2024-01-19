@@ -1,0 +1,46 @@
+name: Add word
+on:
+    workflow_dispatch:
+        inputs:
+            word:
+                description: 'A word to add.'
+                required: true
+                default: ''
+            description:
+                description: 'Description of the word.'
+                required: true
+                default: ''
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        outputs:
+            transformed-word: ${{ steps.transform.outputs.result }}
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Transform Word
+              id: transform
+              run: |
+                  transformWord() { echo "$1" | sed -e 's/ /-/g' -e 'y/ÜüÄäÖö/uuaao/'; }
+                  result=$(transformWord "${{ github.event.inputs.word }}")
+                  echo "::set-output name=result::$result"
+
+            - name: Add word
+              run: |
+                  npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}"
+
+            - name: Create Pull Request
+              uses: peter-evans/create-pull-request@v5
+              with:
+                  title: 'New word: ${{ github.event.inputs.word }}'
+                  branch: 'new_word_${{ needs.transform.outputs.transformed-word }}'
+                  branch-suffix: 'random'
+                  commit-message: 'New word: ${{ github.event.inputs.word }}'
+                  add-paths: words/*.mdx
+                  assignees: |
+                      maksugr
+                      ivan-orekhov
+                  reviewers: |
+                      maksugr
+                      ivan-orekhov

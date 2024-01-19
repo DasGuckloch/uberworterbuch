@@ -23,7 +23,7 @@ jobs:
 
             - name: Add word
               run: |
-                  npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}"
+                  npm run file-from-word "${{ github.event.inputs.word }}" "${{ github.event.inputs.description }}" "${{ github.actor }}"
 
             - name: Create Pull Request
               uses: peter-evans/create-pull-request@v5

@@ -13,12 +13,12 @@ We are really appreciate your participant of making **Überwörterbuch** event b
 
 ### Automatic (recommended)
 
-1. Run npm-script `npm run file-from-word "[YOUR_WORD]" "OPTIONAL_DESCRIPTION"`
+1. Run npm-script `npm run file-from-word "[YOUR_WORD]" "OPTIONAL_DESCRIPTION" "OPTIONAL_AUTHOR"`
     - it will create a file in the `words` directory and fill all four required attributes out;
     - `title` is provided word by you;
     - `description` is provided description by you or placeholder `[DESCRIPTION]` that should be changed;
     - `pubDate` is current date and time;
-    - `author` is your user's name from git config
+    - `author` is provided name by you or your user's name from git config
 2. Consider adding *content* part of the `.mdx` file (the part after two `---`) with examples (please, use *italics*) and a long description (please, use blockquote).
 3. Send a pull-request to the `main` branch of the project's repository and the word will appear on the website after merging!
 

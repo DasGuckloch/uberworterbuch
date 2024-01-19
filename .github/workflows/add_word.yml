@@ -13,19 +13,9 @@ on:
 jobs:
     add:
         runs-on: ubuntu-latest
-        outputs:
-            transformedWord: ${{ steps.transform.outputs.transformedWord }}
         steps:
             - name: Checkout repository
               uses: actions/checkout@v2
-
-            - name: Transform Word
-              id: transform
-              run: |
-                  transformWord() { echo "$1" | sed -e 's/ /-/g' -e 'y/ÜÄÖüäö/uuaaoo/'; }
-                  result=$(transformWord "${{ github.event.inputs.word }}")
-                  result=$(echo "$result" | tr '[:upper:]' '[:lower:]')
-                  echo "transformedWord=$result" >> "$GITHUB_OUTPUT"
 
             - name: Install
               run: |
@@ -39,7 +29,7 @@ jobs:
               uses: peter-evans/create-pull-request@v5
               with:
                   title: 'New word: ${{ github.event.inputs.word }}'
-                  branch: 'new_word_${{ needs.add.outputs.transformedWord }}'
+                  branch: 'new_word'
                   branch-suffix: 'random'
                   commit-message: 'New word: ${{ github.event.inputs.word }}'
                   add-paths: words/*.mdx

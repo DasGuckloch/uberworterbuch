@@ -8,7 +8,8 @@
         "build": "next build",
         "start": "next start",
         "lint": "next lint",
-        "transform-to-file-name": "node ./scripts/transform-to-file-name.js"
+        "filename-from-word": "node ./scripts/filename-from-word.js",
+        "file-from-word": "node ./scripts/file-from-word.js"
     },
     "simple-git-hooks": {
         "pre-commit": "npm run lint"
@@ -36,6 +37,7 @@
         "eslint": "^8",
         "eslint-config-next": "14.0.4",
         "eslint-plugin-import": "^2.29.1",
+        "git-user-name": "^2.0.0",
         "postcss": "^8",
         "simple-git-hooks": "^2.9.0",
         "tailwindcss": "^3.3.0",

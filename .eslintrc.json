@@ -16,5 +16,14 @@
                 "newlines-between": "always"
             }
         ]
-    }
+    },
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "parser": "espree",
+            "parserOptions": {
+                "ecmaVersion": 2020
+            }
+        }
+    ]
 }

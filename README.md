@@ -36,3 +36,9 @@ We are really appreciate your participant of making **Überwörterbuch** event b
     - `author` is a name of the author of the word (*it's you!*);
 3. Consider using *content* part of the `.mdx` file (the part after two `---`) for examples (please, use *italics*) and a long description (please, use blockquote).
 4. Send a pull-request to the `main` branch of the project's repository and the word will appear on the website after merging!
+
+## Adding video to word
+
+There is a `video` attribute of the word which accepts a `src` attribute of the YouTube iframe video code. 
+
+Please, use [this instruction](https://support.google.com/youtube/answer/171780) to get the `src`. Please, turn on controls, start time and confidence link in the settings of the YouTube sharing. Than copy the `src` attribute from the iframe code and add it to the `video` attribute of the word.

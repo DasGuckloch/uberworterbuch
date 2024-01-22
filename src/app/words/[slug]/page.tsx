@@ -4,13 +4,26 @@ import { METADATA } from '../../../constants/metadata';
 import { Word } from '../../../components/Word';
 import { getWord } from '../../../utils/words';
 import { RouteEnum } from '../../../enums/route';
+import { Video } from '../../../components/ui/Video';
 
 import { IWordProps } from './interfaces';
 
 export default async function IWordProps({ params }: IWordProps) {
     const word = await getWord(params.slug);
 
-    return <Word word={word} />;
+    return (
+        <>
+            <section className="mb-6">
+                <Word word={word} />
+            </section>
+            {word.frontmatter.video && (
+                <section>
+                    <h2 className="font-bold mb-1">Video example</h2>
+                    <Video word={word} />
+                </section>
+            )}
+        </>
+    );
 }
 
 export async function generateMetadata({

@@ -5,6 +5,7 @@ export interface IWordFrontmatter {
     readonly description: string;
     readonly pubDate: string;
     readonly author: string;
+    readonly video?: string;
 }
 
 export interface IWord {

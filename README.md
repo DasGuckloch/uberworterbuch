@@ -42,3 +42,5 @@ We are really appreciate your participant of making **Überwörterbuch** event b
 There is a `video` attribute of the word which accepts a `src` attribute of the YouTube iframe video code. 
 
 Please, use [this instruction](https://support.google.com/youtube/answer/171780) to get the `src`. Please, turn on controls, start time and confidence link in the settings of the YouTube sharing. Than copy the `src` attribute from the iframe code and add it to the `video` attribute of the word.
+
+> You can try to find a relevant video for the word in [YouGlish](https://youglish.com/german).

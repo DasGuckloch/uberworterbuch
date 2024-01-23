@@ -13,12 +13,14 @@ export default async function IWordProps({ params }: IWordProps) {
 
     return (
         <>
-            <section className="mb-6">
+            <section className="mb-8">
                 <Word word={word} />
             </section>
             {word.frontmatter.video && (
                 <section>
-                    <h2 className="font-bold mb-1">Video example</h2>
+                    <span className="block font-bold mb-2">
+                        How does it sound?
+                    </span>
                     <Video word={word} />
                 </section>
             )}

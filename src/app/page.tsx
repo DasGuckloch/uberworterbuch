@@ -7,9 +7,9 @@ export default async function Home() {
     return (
         <>
             {lastWords.map((word) => (
-                <div key={word.slug} className="mb-6">
+                <article key={word.slug} className="mb-6">
                     <Word word={word} />
-                </div>
+                </article>
             ))}
         </>
     );

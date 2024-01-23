@@ -8,21 +8,21 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;
 
     return (
-        <div className="bg-[#facc15] border-4 border-[#000] rounded-lg p-6">
-            <div className="flex flex-col justify-between items-start gap-4 mdx-content">
-                <p className="mt-4 outfit text-2xl md:text-5xl lg:text-7xl">
+        <section className="bg-[#facc15] border-4 border-[#000] rounded-lg p-6">
+            <section className="flex flex-col justify-between items-start gap-4 mdx-content">
+                <h1 className="outfit text-2xl md:text-5xl lg:text-7xl">
                     <a href={`/words/${slug}`}>{frontmatter.title}</a>
-                </p>
-                <p>
+                </h1>
+                <h2>
                     <strong>{frontmatter.description}</strong>
-                </p>
+                </h2>
                 {content}
-            </div>
-            <div className="mt-4 text-xs">
+            </section>
+            <section className="mt-4 text-xs">
                 {dayjs(frontmatter.pubDate, DATE_FORMAT_MDX).format(
                     DATE_FORMAT_PUBLIC
                 )}
-            </div>
-        </div>
+            </section>
+        </section>
     );
 };

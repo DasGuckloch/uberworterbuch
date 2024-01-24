@@ -7,6 +7,10 @@
     <b>Das urbanste deutsche Wörterbuch!</b>
 </p>
 
+## Word
+
+`word` is the main entity of the project. All `words` are located in the directory `/words` and have `.mdx` extension. Every word has metainformation (*frontmatter*). Full list of attributes is [here](https://github.com/DasGuckloch/uberworterbuch/blob/main/src/interfaces/words.ts#L3).
+
 ## Adding words
 
 We are really appreciate your participant of making **Überwörterbuch** event better :heart:
@@ -14,13 +18,14 @@ We are really appreciate your participant of making **Überwörterbuch** event b
 ### Automatic (recommended)
 
 1. Run npm-script `npm run file-from-word "[YOUR_WORD]" "OPTIONAL_DESCRIPTION" "OPTIONAL_AUTHOR"`
-    - it will create a file in the `words` directory and fill all four required attributes out;
+    - it will create a file in the `words` directory and fill four metainformation (*frontmatter*) attributes out;
     - `title` is provided word by you;
     - `description` is provided description by you or placeholder `[DESCRIPTION]` that should be changed;
     - `pubDate` is current date and time;
     - `author` is provided name by you or your user's name from git config
-2. Consider adding *content* part of the `.mdx` file (the part after two `---`) with examples (please, use *italics*) and a long description (please, use blockquote).
-3. Send a pull-request to the `main` branch of the project's repository and the word will appear on the website after merging!
+2. Consider adding other attributes (full list of attributes is [here](https://github.com/DasGuckloch/uberworterbuch/blob/main/src/interfaces/words.ts#L3)).
+3. Consider adding *content* part of the `.mdx` file (the part after two `---`) with examples (please, use *italics*) and a long description (please, use blockquote).
+4. Send a pull-request to the `main` branch of the project's repository and the word will appear on the website after merging!
 
 ### Manual
 
@@ -29,11 +34,7 @@ We are really appreciate your participant of making **Überwörterbuch** event b
     - use the word title as the basis for the file name;
     - please, don't use umlauts in the file name;
     - consider using `npm run filename-from-word "[YOUR_WORD]"` script (e.g. `npm run filename-from-word "Überwörterbuch"` => `uberworterbuch`), it will result in lowercase, replace umlauts and change spaces to dashes;
-2. There is metainformation (*frontmatter*) vertically between the two `---` and all four attributes (*title*, *description*, *pubDate*, *author*) are **required**.
-    - `title` is a word name;
-    - `description` is a short description of the main essence of the word;
-    - `pubDate` is a static publication date; it should be aligned with file creation date and time; the format of the date is: `DD/MM/YYYY HH:mm`;
-    - `author` is a name of the author of the word (*it's you!*);
+2. There is a metainformation (*frontmatter*) vertically between the two `---` (full list of attributes is [here](https://github.com/DasGuckloch/uberworterbuch/blob/main/src/interfaces/words.ts#L3)).
 3. Consider using *content* part of the `.mdx` file (the part after two `---`) for examples (please, use *italics*) and a long description (please, use blockquote).
 4. Send a pull-request to the `main` branch of the project's repository and the word will appear on the website after merging!
 

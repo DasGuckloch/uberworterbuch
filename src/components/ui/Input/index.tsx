@@ -46,7 +46,7 @@ export const Input = () => {
     return (
         <div className="relative mt-6">
             <input
-                className="w-full bg-[#38bdf8] p-3 pr-10 rounded-lg border-4 border-[#000] outline-none placeholder:italic placeholder:text-black"
+                className="w-full bg-[#388df8] p-3 pr-10 rounded-lg border-4 border-[#000] outline-none placeholder:italic placeholder:text-black"
                 value={searchValue}
                 onChange={(event) => setSearchValue(event.target.value)}
                 placeholder="Suche"

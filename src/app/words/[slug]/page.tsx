@@ -31,23 +31,28 @@ export default async function IWordProps({ params }: IWordProps) {
 export async function generateMetadata({
     params,
 }: IWordProps): Promise<Metadata> {
-    const word = await getWord(params.slug);
+    const { frontmatter, slug } = await getWord(params.slug);
 
     return {
-        title: word.frontmatter.title,
-        description: word.frontmatter.description,
+        title: frontmatter.title,
+        description: frontmatter.description,
+        keywords: [
+            ...METADATA.keywords,
+            frontmatter.title,
+            ...(frontmatter.relatedWords || []),
+        ],
         openGraph: {
             ...METADATA.openGraph,
-            title: `${word.frontmatter.title} | ${METADATA.title}`,
-            description: word.frontmatter.description,
-            url: `${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}`,
-            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}/og`],
+            title: `${frontmatter.title} | ${METADATA.title}`,
+            description: frontmatter.description,
+            url: `${METADATA.domain}/${RouteEnum.WORDS}/${slug}`,
+            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${slug}/og`],
         },
         twitter: {
             ...METADATA.twitter,
-            title: `${word.frontmatter.title} | ${METADATA.title}`,
-            description: word.frontmatter.description,
-            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}/og`],
+            title: `${frontmatter.title} | ${METADATA.title}`,
+            description: frontmatter.description,
+            images: [`${METADATA.domain}/${RouteEnum.WORDS}/${slug}/og`],
         },
     };
 }

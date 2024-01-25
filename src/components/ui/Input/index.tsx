@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import debounce from 'lodash.debounce';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -10,8 +9,9 @@ import {
     getRandomWordSlugRequest,
     searchWordsRequest,
 } from '../../../client-api';
+import { Loader } from '../../Loader';
 
-import ShuffleIconSvg from './assets/shuffle.svg';
+import { ShuffleIcon } from './ShuffleIcon';
 
 const GET_SEARCH_ITEMS_THROTTLE_MS = 300;
 
@@ -35,6 +35,8 @@ export const Input = () => {
     const [searchValue, setSearchValue] = useState('');
     const [words, setWords] = useState<IWord[]>([]);
 
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
         if (!searchValue) {
             setWords([]);
@@ -52,18 +54,24 @@ export const Input = () => {
                 placeholder="Suche"
             />
             <button
+                disabled={isLoading}
                 className="absolute top-0 bottom-0 right-0 p-3"
                 onClick={async () => {
+                    setIsLoading(true);
+
                     setSearchValue('');
                     setWords([]);
 
                     const { slug: randomSlug } = await getRandomWordSlugRequest(
                         params.slug
                     );
+
                     router.push(`/${RouteEnum.WORDS}/${randomSlug}`);
+
+                    setIsLoading(false);
                 }}
             >
-                <Image src={ShuffleIconSvg} alt="zufällig" className="w-6" />
+                {isLoading ? <Loader /> : <ShuffleIcon />}
             </button>
             {!!words.length && (
                 <div className="absolute shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-main-black bg-main-blue box-border z-10 overflow-hidden">
@@ -71,7 +79,7 @@ export const Input = () => {
                         return (
                             <button
                                 key={word.slug}
-                                className="p-3 bg-main-blue"
+                                className="p-3 bg-main-blue w-full text-left outline-none"
                                 onClick={() => {
                                     setSearchValue('');
                                     setWords([]);

@@ -15,14 +15,33 @@ import {
 
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
+let allWordsCached: IWord[] = [];
+
 export const getAllWords = async (): Promise<IWord[]> => {
+    if (!!allWordsCached.length) {
+        return allWordsCached;
+    }
+
     const wordFileNames = await fs.readdir(wordsFolderPath);
 
     const slugs = wordFileNames.map(getSlugByWordFileName);
-    return await getWordsBySlugs(slugs);
+
+    const allWords = await getWordsBySlugs(slugs);
+
+    allWordsCached = allWords;
+
+    return allWords;
 };
 
 export const getWord = async (slug: string): Promise<IWord> => {
+    const wordCached = allWordsCached.find(
+        (wordCached) => wordCached.slug === slug
+    );
+
+    if (!!wordCached) {
+        return wordCached;
+    }
+
     const wordFilePath = getWordFilePath(slug);
     const markdown = await getWordMarkdown(wordFilePath);
 
@@ -85,24 +104,20 @@ export const wordNameToSlug = (word: string): string => {
 
 export const getRelativeLinkText = (link: string): string => {
     const url = new URL(link);
-
     return `${url.host}`;
 };
 
 const getNrandomWords = async (n: number): Promise<IWord[]> => {
-    const wordNames = await fs.readdir(wordsFolderPath);
+    const allWords = await getAllWords();
 
-    const shuffledWordNames = wordNames.slice().sort(() => Math.random() - 0.5);
-    const randomNWordNamesWithoutExtension = shuffledWordNames
-        .slice(0, n)
-        .map(getSlugByWordFileName);
+    const shuffledWords = allWords.slice().sort(() => Math.random() - 0.5);
+    const randomNWords = shuffledWords.slice(0, n);
 
-    return await getWordsBySlugs(randomNWordNamesWithoutExtension);
+    return randomNWords;
 };
 
 const getWordsBySlugs = async (slugs: string[]): Promise<IWord[]> => {
     const words = await Promise.all(slugs.map((slug) => getWord(slug)));
-
     return sortWordsByDate(words);
 };
 

@@ -20,9 +20,13 @@ button {
 }
 
 a:hover,
-button:hover,
-button img:hover {
+button:hover:enabled,
+button:enabled img:hover {
     opacity: 0.8;
+}
+
+button:disabled {
+    opacity: 0.4;
 }
 
 .mdx-content blockquote {

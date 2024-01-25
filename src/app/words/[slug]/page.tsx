@@ -18,7 +18,7 @@ export default async function IWordProps({ params }: IWordProps) {
             </section>
             {word.frontmatter.video && (
                 <section>
-                    <span className="block font-bold mb-2">
+                    <span className="block font-bold mb-2 text-main-red">
                         How does it sound?
                     </span>
                     <Video word={word} />

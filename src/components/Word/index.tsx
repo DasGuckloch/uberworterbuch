@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 import { DATE_FORMAT_MDX, DATE_FORMAT_PUBLIC } from '../../constants/date';
 import { RouteEnum } from '../../enums/route';
-import { getLinkText, wordToSlug } from '../../utils/words';
+import { getRelativeLinkText, wordNameToSlug } from '../../utils/words';
 
 import { IWordProps } from './interfaces';
 
@@ -10,7 +10,7 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;
 
     return (
-        <section className="bg-[#facc15] border-4 border-[#000] rounded-lg p-6">
+        <section className="bg-main-yellow border-4 border-main-black rounded-lg p-6">
             <section className="flex flex-col justify-between items-start gap-4 mdx-content">
                 <h1 className="outfit text-2xl md:text-5xl lg:text-7xl">
                     <a href={`/words/${slug}`}>{frontmatter.title}</a>
@@ -25,10 +25,10 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                     {frontmatter.relatedWords.map((relatedWord) => (
                         <a
                             key={relatedWord}
-                            href={`/${RouteEnum.WORDS}/${wordToSlug(
+                            href={`/${RouteEnum.WORDS}/${wordNameToSlug(
                                 relatedWord
                             )}`}
-                            className="mr-2 text-[#388df8]"
+                            className="mr-2 text-main-blue"
                         >
                             {relatedWord}
                         </a>
@@ -41,10 +41,10 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                         <a
                             key={relatedLink}
                             href={relatedLink}
-                            className="mr-2 text-[#000] opacity-20"
+                            className="mr-2 text-main-black opacity-20"
                             target="_blank"
                         >
-                            {getLinkText(relatedLink)}
+                            {getRelativeLinkText(relatedLink)}
                         </a>
                     ))}
                 </section>

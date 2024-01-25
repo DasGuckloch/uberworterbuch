@@ -11,10 +11,22 @@
 }
 
 body {
+    color: theme('colors.main-black');
+}
+
+a,
+button {
+    transition: 0.3s;
+}
+
+a:hover,
+button:hover,
+button img:hover {
+    opacity: 0.8;
 }
 
 .mdx-content blockquote {
-    border-left: 3px solid #2c2c2c;
+    border-left: 3px solid theme('colors.main-black');
     padding-left: 10px;
     font-size: 0.8em;
 }
@@ -22,7 +34,7 @@ body {
 .mdx-content a,
 .mdx-content h1 {
     position: relative;
-    color: #388df8;
+    color: theme('colors.main-blue');
     font-weight: 700;
 }
 
@@ -35,7 +47,7 @@ body {
     right: 0;
     width: 100%;
     height: 2px;
-    background: #388df8;
+    background: theme('colors.main-blue');
 }
 
 .mdx-content h1 a:after {

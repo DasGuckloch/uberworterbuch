@@ -2,6 +2,8 @@ import { ImageResponse } from 'next/og';
 
 import { RouteEnum } from '../../../../enums/route';
 import { METADATA, OG_IMAGE_LOGO_URL } from '../../../../constants/metadata';
+import { getThemeColor } from '../../../../utils/tailwind';
+import { ColorEnum } from '../../../../enums/color';
 
 export const runtime = 'edge';
 
@@ -23,7 +25,7 @@ export async function GET(request: Request) {
         (
             <div
                 style={{
-                    background: '#facc15',
+                    background: getThemeColor(ColorEnum.MAIN_YELLOW),
                     lineHeight: '1',
                     width: '100%',
                     height: '100%',
@@ -36,7 +38,7 @@ export async function GET(request: Request) {
                     style={{
                         fontSize: 96,
                         borderBottom: '7px',
-                        color: '#f87171',
+                        color: getThemeColor(ColorEnum.MAIN_RED),
                         marginBottom: '10',
                     }}
                 >
@@ -51,7 +53,7 @@ export async function GET(request: Request) {
                     <div
                         style={{
                             fontSize: 32,
-                            color: '#000000',
+                            color: getThemeColor(ColorEnum.MAIN_BLACK),
                             paddingRight: '24px',
                             alignItems: 'flex-end',
                         }}

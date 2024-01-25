@@ -7,50 +7,35 @@ import { notFound } from 'next/navigation';
 
 import { IWord, IWordFrontmatter } from '../interfaces/words';
 import { DATE_FORMAT_MDX } from '../constants/date';
+import {
+    WORDS_FILE_EXTENSION,
+    WORDS_FOLDER_NAME,
+    WORDS_PER_PAGE,
+} from '../constants/word';
 
-const WORDS_FOLDER_NAME = 'words';
-const WORDS_EXTENSION = 'mdx';
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
+export const getAllWords = async (): Promise<IWord[]> => {
+    const wordFileNames = await fs.readdir(wordsFolderPath);
+
+    const slugs = wordFileNames.map(getSlugByWordFileName);
+    return await getWordsBySlugs(slugs);
+};
+
 export const getWord = async (slug: string): Promise<IWord> => {
-    const wordPath = getWordPath(slug);
-    const markdown = await getWordMarkdown(wordPath);
+    const wordFilePath = getWordFilePath(slug);
+    const markdown = await getWordMarkdown(wordFilePath);
 
     if (!markdown) {
         return notFound();
     }
 
-    const word = await compileWord(markdown);
+    const word = await compileWordMarkdown(markdown);
 
     return {
         ...word,
         slug,
     };
-};
-
-export const getWords = async (slugs: string[]): Promise<IWord[]> => {
-    const words = await Promise.all(slugs.map((slug) => getWord(slug)));
-
-    return sortWordsByDate(words);
-};
-
-export const getAllWords = async (): Promise<IWord[]> => {
-    const wordNames = await fs.readdir(wordsFolderPath);
-
-    const slugs = wordNames.map((wordName) => removeExtension(wordName));
-
-    return await getWords(slugs);
-};
-
-export const getNrandomWords = async (n: number): Promise<IWord[]> => {
-    const wordNames = await fs.readdir(wordsFolderPath);
-
-    const shuffledWordNames = wordNames.slice().sort(() => Math.random() - 0.5);
-    const randomNWordNamesWithoutExtension = shuffledWordNames
-        .slice(0, n)
-        .map((wordName) => removeExtension(wordName));
-
-    return await getWords(randomNWordNamesWithoutExtension);
 };
 
 export const getRandomWord = async (slug?: string | null): Promise<IWord> => {
@@ -63,16 +48,69 @@ export const getRandomWord = async (slug?: string | null): Promise<IWord> => {
     return randomWord;
 };
 
-export const getNlastWords = async (n: number): Promise<IWord[]> => {
-    const wordNames = (await fs.readdir(wordsFolderPath)).map((wordName) =>
-        removeExtension(wordName)
-    );
+export const getNWords = async (n: number): Promise<IWord[]> => {
+    const words = (await getAllWords()).slice(0, n);
 
-    return (await getWords(wordNames)).slice(0, n);
+    return words;
 };
 
-const getWordPath = (slug: string): string => {
-    return path.join(wordsFolderPath, `${slug}.${WORDS_EXTENSION}`);
+export const getNextWords = async (
+    currentWordsAmount: number
+): Promise<{ nextWords: IWord[]; isEnd: boolean }> => {
+    const currentWordsIndex = currentWordsAmount;
+    const nextWordsLastIndex = currentWordsIndex + WORDS_PER_PAGE;
+
+    const allWords = await getAllWords();
+
+    const nextWords = allWords.slice(currentWordsIndex, nextWordsLastIndex);
+    const isEnd = nextWordsLastIndex >= allWords.length;
+
+    return {
+        nextWords,
+        isEnd,
+    };
+};
+
+export const wordNameToSlug = (word: string): string => {
+    let result = word.replace(/\s/g, '-');
+
+    result = result.toLowerCase();
+
+    result = result.replace(/[üÜ]/g, 'u');
+    result = result.replace(/[äÄ]/g, 'a');
+    result = result.replace(/[öÖ]/g, 'o');
+
+    return result;
+};
+
+export const getRelativeLinkText = (link: string): string => {
+    const url = new URL(link);
+
+    return `${url.host}`;
+};
+
+const getNrandomWords = async (n: number): Promise<IWord[]> => {
+    const wordNames = await fs.readdir(wordsFolderPath);
+
+    const shuffledWordNames = wordNames.slice().sort(() => Math.random() - 0.5);
+    const randomNWordNamesWithoutExtension = shuffledWordNames
+        .slice(0, n)
+        .map(getSlugByWordFileName);
+
+    return await getWordsBySlugs(randomNWordNamesWithoutExtension);
+};
+
+const getWordsBySlugs = async (slugs: string[]): Promise<IWord[]> => {
+    const words = await Promise.all(slugs.map((slug) => getWord(slug)));
+
+    return sortWordsByDate(words);
+};
+
+const getSlugByWordFileName = (wordFileName: string): string =>
+    removeWordFileExtension(wordFileName);
+
+const getWordFilePath = (slug: string): string => {
+    return path.join(wordsFolderPath, `${slug}.${WORDS_FILE_EXTENSION}`);
 };
 
 const getWordMarkdown = async (path: string): Promise<string | null> => {
@@ -87,7 +125,7 @@ const getWordMarkdown = async (path: string): Promise<string | null> => {
     return file;
 };
 
-const compileWord = async (
+const compileWordMarkdown = async (
     markdown: string
 ): Promise<CompileMDXResult<IWordFrontmatter>> => {
     return await compileMDX<IWordFrontmatter>({
@@ -96,8 +134,8 @@ const compileWord = async (
     });
 };
 
-const removeExtension = (wordName: string): string => {
-    return wordName.split('.mdx')[0];
+const removeWordFileExtension = (wordFileName: string): string => {
+    return wordFileName.split(`.${WORDS_FILE_EXTENSION}`)[0];
 };
 
 const sortWordsByDate = (words: IWord[]): IWord[] => {
@@ -108,22 +146,4 @@ const sortWordsByDate = (words: IWord[]): IWord[] => {
             ? -1
             : 1
     );
-};
-
-export const wordToSlug = (word: string): string => {
-    let result = word.replace(/\s/g, '-');
-
-    result = result.toLowerCase();
-
-    result = result.replace(/[üÜ]/g, 'u');
-    result = result.replace(/[äÄ]/g, 'a');
-    result = result.replace(/[öÖ]/g, 'o');
-
-    return result;
-};
-
-export const getLinkText = (link: string): string => {
-    const url = new URL(link);
-
-    return `${url.host}`;
 };

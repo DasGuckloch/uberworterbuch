@@ -46,15 +46,13 @@ export const Input = () => {
     return (
         <div className="relative mt-6">
             <input
-                className="w-full bg-[#388df8] p-3 pr-10 rounded-lg border-4 border-[#000] outline-none placeholder:italic placeholder:text-black"
+                className="w-full bg-main-blue p-3 pr-11 rounded-lg border-4 border-main-black outline-none placeholder:italic placeholder:text-main-black"
                 value={searchValue}
                 onChange={(event) => setSearchValue(event.target.value)}
                 placeholder="Suche"
             />
-            <Image
-                src={ShuffleIconSvg}
-                alt="zufällig"
-                className="w-6 absolute right-3 top-0 bottom-0 m-auto cursor-pointer"
+            <button
+                className="absolute top-0 bottom-0 right-0 p-3"
                 onClick={async () => {
                     setSearchValue('');
                     setWords([]);
@@ -64,14 +62,16 @@ export const Input = () => {
                     );
                     router.push(`/${RouteEnum.WORDS}/${randomSlug}`);
                 }}
-            />
+            >
+                <Image src={ShuffleIconSvg} alt="zufällig" className="w-6" />
+            </button>
             {!!words.length && (
-                <div className="absolute shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-[#000] bg-[#60a5fa] box-border z-10 overflow-hidden">
+                <div className="absolute shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-main-black bg-main-blue box-border z-10 overflow-hidden">
                     {words.map((word) => {
                         return (
-                            <div
+                            <button
                                 key={word.slug}
-                                className="p-3 bg-[#60a5fa] hover:bg-[#6093fa] cursor-pointer"
+                                className="p-3 bg-main-blue"
                                 onClick={() => {
                                     setSearchValue('');
                                     setWords([]);
@@ -82,7 +82,7 @@ export const Input = () => {
                                 }}
                             >
                                 <div>{word.frontmatter.title}</div>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>

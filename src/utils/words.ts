@@ -2,7 +2,6 @@ import path from 'path';
 import { promises as fs } from 'fs';
 
 import { CompileMDXResult, compileMDX } from 'next-mdx-remote/rsc';
-import dayjs from 'dayjs';
 import { notFound } from 'next/navigation';
 
 import { IWord, IWordFrontmatter } from '../interfaces/words';
@@ -12,6 +11,8 @@ import {
     WORDS_FOLDER_NAME,
     WORDS_PER_PAGE,
 } from '../constants/word';
+
+import { dayjs } from './dayjs';
 
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 

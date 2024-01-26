@@ -1,11 +1,10 @@
 import RSS from 'rss';
-import dayjs from 'dayjs';
 
 import { METADATA, RSS_TYPE } from '../../constants/metadata';
 import { getAllWords } from '../../utils/words';
 import { RouteEnum } from '../../enums/route';
-import '../../utils/dayjs';
 import { DATE_FORMAT_MDX } from '../../constants/date';
+import { dayjs } from '../../utils/dayjs';
 
 export async function GET() {
     const feed = new RSS({

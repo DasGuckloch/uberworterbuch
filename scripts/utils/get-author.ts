@@ -1,6 +1,6 @@
-const gitUserName = require('git-user-name');
+import gitUserName from 'git-user-name';
 
-const getAuthor = () => {
+export const getAuthor = (): string | null => {
     const author = (process.argv[4] || '').trim();
 
     if (!!author) {
@@ -8,8 +8,4 @@ const getAuthor = () => {
     }
 
     return gitUserName();
-};
-
-module.exports = {
-    getAuthor,
 };

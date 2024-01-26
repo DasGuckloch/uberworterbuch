@@ -1,4 +1,4 @@
-const transformWord = (word) => {
+export const transformWord = (word: string): string => {
     let result = word.replace(/\s/g, '-');
 
     result = result.toLowerCase();
@@ -8,8 +8,4 @@ const transformWord = (word) => {
     result = result.replace(/[öÖ]/g, 'o');
 
     return result;
-};
-
-module.exports = {
-    transformWord,
 };

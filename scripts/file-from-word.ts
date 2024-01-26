@@ -1,11 +1,11 @@
-const path = require('path');
-const fs = require('fs');
+import { join } from 'path';
+import { writeFileSync } from 'fs';
 
-const { getTitle } = require('./utils/get-title');
-const { getDescription } = require('./utils/get-description');
-const { getPubDate } = require('./utils/get-pub-date');
-const { getAuthor } = require('./utils/get-author');
-const { transformWord } = require('./utils/transform-word');
+import { getAuthor } from './utils/get-author';
+import { getDescription } from './utils/get-description';
+import { getPubDate } from './utils/get-pub-date';
+import { getTitle } from './utils/get-title';
+import { transformWord } from './utils/transform-word';
 
 const DESCRIPTION_PLACEHOLDER = '[DESCRIPTION]';
 
@@ -22,8 +22,8 @@ author: ${getAuthor()}
 ---
 `;
 
-const filePath = path.join(__dirname, '..', 'words', `${fileName}.mdx`);
-fs.writeFileSync(filePath, fileTemplate);
+const filePath = join(__dirname, '..', 'words', `${fileName}.mdx`);
+writeFileSync(filePath, fileTemplate);
 
 console.info(`Word is: "${word}"`);
 console.info(

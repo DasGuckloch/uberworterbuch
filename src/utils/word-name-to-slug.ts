@@ -1,4 +1,4 @@
-export const transformWord = (word: string): string => {
+export const wordNameToSlug = (word: string): string => {
     let result = word.replace(/\s/g, '-');
 
     result = result.toLowerCase();

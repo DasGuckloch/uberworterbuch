@@ -1,18 +1,19 @@
 import { join } from 'path';
 import { writeFileSync } from 'fs';
 
+import { wordNameToSlug } from '../src/utils/word-name-to-slug';
+
 import { getAuthor } from './utils/get-author';
 import { getDescription } from './utils/get-description';
 import { getPubDate } from './utils/get-pub-date';
 import { getTitle } from './utils/get-title';
-import { transformWord } from './utils/transform-word';
 
 const DESCRIPTION_PLACEHOLDER = '[DESCRIPTION]';
 
 const word = getTitle();
 const description = getDescription();
 
-const fileName = transformWord(word);
+const fileName = wordNameToSlug(word);
 
 const fileTemplate = `---
 title: ${word}

@@ -1,7 +1,8 @@
 import { DATE_FORMAT_MDX, DATE_FORMAT_PUBLIC } from '../../constants/date';
 import { RouteEnum } from '../../enums/route';
-import { getRelativeLinkText, wordNameToSlug } from '../../utils/words';
+import { getRelativeLinkText } from '../../utils/words';
 import { dayjs } from '../../utils/dayjs';
+import { wordNameToSlug } from '../../utils/word-name-to-slug';
 
 import { IWordProps } from './interfaces';
 

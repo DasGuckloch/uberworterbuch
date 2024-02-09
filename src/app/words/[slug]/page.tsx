@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 
-import { METADATA } from '../../../constants/metadata';
+import { METADATA } from '../../../../share/constants/metadata';
 import { Word } from '../../../components/Word';
-import { getWord } from '../../../utils/words';
-import { RouteEnum } from '../../../enums/route';
+import { RouteEnum } from '../../../../share/enums/route';
 import { Video } from '../../../components/ui/Video';
+import { getWord } from '../../../../share/utils/words';
 
 import { IWordProps } from './interfaces';
 

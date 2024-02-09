@@ -1,4 +1,4 @@
-export const getTitle = () => {
+export const getTitle = (): string => {
     const title = (process.argv[2] || '').trim();
 
     if (!title) {

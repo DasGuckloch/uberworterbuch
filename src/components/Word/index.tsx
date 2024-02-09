@@ -1,7 +1,13 @@
-import { DATE_FORMAT_MDX, DATE_FORMAT_PUBLIC } from '../../constants/date';
-import { RouteEnum } from '../../enums/route';
-import { getRelativeLinkText, wordNameToSlug } from '../../utils/words';
-import { dayjs } from '../../utils/dayjs';
+import { RouteEnum } from '../../../share/enums/route';
+import { dayjs } from '../../../share//utils/dayjs';
+import {
+    getRelativeLinkText,
+    wordNameToSlug,
+} from '../../../share/utils/words';
+import {
+    DATE_FORMAT_MDX,
+    DATE_FORMAT_PUBLIC,
+} from '../../../share//constants/date';
 
 import { IWordProps } from './interfaces';
 

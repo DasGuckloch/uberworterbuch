@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 
-import { getAllWords } from '../../../../utils/words';
+import { getAllWords } from '../../../../../share/utils/words';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;

@@ -4,8 +4,6 @@ import { promises as fs } from 'fs';
 import { CompileMDXResult, compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 
-import { IWord, IWordFrontmatter } from '../interfaces/words';
-import { DATE_FORMAT_MDX } from '../constants/date';
 import {
     WORDS_FILE_EXTENSION,
     WORDS_FOLDER_NAME,
@@ -13,6 +11,8 @@ import {
 } from '../constants/word';
 
 import { dayjs } from './dayjs';
+import { DATE_FORMAT_MDX } from '../constants/date';
+import { IWord, IWordFrontmatter } from '../interfaces/words';
 
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
@@ -129,7 +129,7 @@ const getWordFilePath = (slug: string): string => {
     return path.join(wordsFolderPath, `${slug}.${WORDS_FILE_EXTENSION}`);
 };
 
-const getWordMarkdown = async (path: string): Promise<string | null> => {
+export const getWordMarkdown = async (path: string): Promise<string | null> => {
     let file;
 
     try {
@@ -141,7 +141,7 @@ const getWordMarkdown = async (path: string): Promise<string | null> => {
     return file;
 };
 
-const compileWordMarkdown = async (
+export const compileWordMarkdown = async (
     markdown: string
 ): Promise<CompileMDXResult<IWordFrontmatter>> => {
     return await compileMDX<IWordFrontmatter>({

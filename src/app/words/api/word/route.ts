@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { notFound } from 'next/navigation';
 
-import { getWord } from '../../../../utils/words';
+import { getWord } from '../../../../../share/utils/words';
 
 export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;

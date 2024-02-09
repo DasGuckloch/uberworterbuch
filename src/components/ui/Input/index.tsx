@@ -3,8 +3,8 @@ import debounce from 'lodash.debounce';
 import { useParams, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { RouteEnum } from '../../../enums/route';
-import { IWord } from '../../../interfaces/words';
+import { RouteEnum } from '../../../../share/enums/route';
+import { IWord } from '../../../../share/interfaces/words';
 import {
     getRandomWordSlugRequest,
     searchWordsRequest,

@@ -1,4 +1,4 @@
-const DOMAIN =
+export const DOMAIN =
     process.env.NODE_ENV === 'production'
         ? 'https://uberworterbuch.de'
         : 'http://localhost:3000';

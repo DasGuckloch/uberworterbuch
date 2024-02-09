@@ -1,5 +1,5 @@
-import { getTitle } from './getters/get-title.js';
-import { wordNameToSlug } from './utils/words.js';
+import { getTitle } from './getters/get-title';
+import { wordNameToSlug } from '../utils/words';
 
 const wordToTransform = getTitle();
 const fileName = wordNameToSlug(wordToTransform);

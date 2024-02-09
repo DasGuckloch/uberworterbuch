@@ -1,9 +1,12 @@
 import { ImageResponse } from 'next/og';
 
-import { RouteEnum } from '../../../../enums/route';
-import { METADATA, OG_IMAGE_LOGO_URL } from '../../../../constants/metadata';
-import { getThemeColor } from '../../../../utils/tailwind';
-import { ColorEnum } from '../../../../enums/color';
+import { RouteEnum } from '../../../../../share/enums/route';
+import {
+    METADATA,
+    OG_IMAGE_LOGO_URL,
+} from '../../../../../share/constants/metadata';
+import { ColorEnum } from '../../../../../share/enums/color';
+import { getThemeColor } from '../../../../../share//utils/tailwind';
 
 export const runtime = 'edge';
 

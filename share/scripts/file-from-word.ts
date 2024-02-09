@@ -5,11 +5,11 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-import { getAuthor } from './getters/get-author.js';
-import { getDescription } from './getters/get-description.js';
-import { getPubDate } from './getters/get-pub-date.js';
-import { getTitle } from './getters/get-title.js';
-import { wordNameToSlug } from './utils/words.js';
+import { getAuthor } from './getters/get-author';
+import { getDescription } from './getters/get-description';
+import { getPubDate } from './getters/get-pub-date';
+import { getTitle } from './getters/get-title';
+import { wordNameToSlug } from '../utils/words';
 
 const DESCRIPTION_PLACEHOLDER = '[DESCRIPTION]';
 
@@ -26,7 +26,7 @@ author: ${getAuthor()}
 ---
 `;
 
-const filePath = join(__dirname, '..', 'words', `${fileName}.mdx`);
+const filePath = join(__dirname, '..', '..', 'words', `${fileName}.mdx`);
 writeFileSync(filePath, fileTemplate);
 
 console.info(`Word: "${word}"`);

@@ -1,8 +1,8 @@
 import { MetadataRoute } from 'next';
 
-import { getAllWords } from '../utils/words';
-import { RouteEnum } from '../enums/route';
-import { METADATA } from '../constants/metadata';
+import { RouteEnum } from '../../share/enums/route';
+import { METADATA } from '../../share/constants/metadata';
+import { getAllWords } from '../../share/utils/words';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const allWords = await getAllWords();

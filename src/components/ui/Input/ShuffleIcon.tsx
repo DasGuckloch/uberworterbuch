@@ -1,4 +1,4 @@
-import { ICON_SIZE } from '../../../constants/icon';
+import { ICON_SIZE } from '../../../../share/constants/icon';
 
 export const ShuffleIcon = () => {
     return (

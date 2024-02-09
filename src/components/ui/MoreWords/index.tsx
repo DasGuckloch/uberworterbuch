@@ -1,9 +1,9 @@
 'use client';
 import { useState } from 'react';
 
-import { WORDS_PER_PAGE } from '../../../constants/word';
 import { Button } from '../../Button';
 import { Loader } from '../../Loader';
+import { WORDS_PER_PAGE } from '../../../../share/constants/word';
 
 import { IMoreWordsProps } from './interfaces';
 

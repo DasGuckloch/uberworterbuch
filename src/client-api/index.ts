@@ -1,5 +1,5 @@
-import { RouteEnum } from '../enums/route';
-import { IWord } from '../interfaces/words';
+import { RouteEnum } from '../../share/enums/route';
+import { IWord } from '../../share/interfaces/words';
 
 export const searchWordsRequest = async (
     searchValue: string

@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 
 import './globals.css';
 import { Layout } from '../components/Layout';
-import { METADATA } from '../constants/metadata';
+import { METADATA } from '../../share/constants/metadata';
 
 interface IRootLayoutProps {
     readonly children: React.ReactNode;

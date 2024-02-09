@@ -1,8 +1,6 @@
 name: Send new word notification
 on:
-  push:
-    branches:
-      - main
+  deployment_status
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -12,6 +10,7 @@ env:
   TWITTER_CLIENT_ACCESS_SECRET: ${{ secrets.TWITTER_CLIENT_ACCESS_SECRET }}
 jobs:
   changed_files:
+    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

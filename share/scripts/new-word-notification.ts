@@ -14,6 +14,10 @@ const slugs = args
     );
 
 (async () => {
+    if (!slugs.length) {
+        console.info('There are no new words.');
+    }
+
     const words = await Promise.all(slugs.map(async (slug) => getWord(slug)));
 
     await sendTelegramNewWordMessage(words);

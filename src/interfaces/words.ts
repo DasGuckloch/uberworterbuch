@@ -9,6 +9,7 @@ export interface IWordFrontmatter {
     readonly video?: string;
     readonly relatedWords?: string[];
     readonly relatedLinks?: string[];
+    readonly emoji?: string;
 }
 
 export interface IWord {

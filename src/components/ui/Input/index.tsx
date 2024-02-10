@@ -74,7 +74,7 @@ export const Input = () => {
                 {isLoading ? <Loader /> : <ShuffleIcon />}
             </button>
             {!!words.length && (
-                <div className="absolute shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-main-black bg-main-blue box-border z-10 overflow-hidden">
+                <div className="absolute max-h-[296px] overflow-scroll shadow-zinc-800 shadow-2xl top-16 left-0 w-full rounded-lg border-4 border-main-black bg-main-blue box-border z-10">
                     {words.map((word) => {
                         return (
                             <button

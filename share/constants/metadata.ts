@@ -13,6 +13,10 @@ const OG_IMAGE_URL = `${IMAGES_GH_PATH}/social_gh.png?${IMAGES_GH_SEARCH_PARAM}`
 export const OG_IMAGE_LOGO_URL = `${IMAGES_GH_PATH}/social_og.png?${IMAGES_GH_SEARCH_PARAM}`;
 export const RSS_TYPE = 'application/atom+xml';
 
+export const TWITTER_LINK = 'https://twitter.com/uberworterbuch';
+export const TELEGRAM_LINK = 'https://t.me/uberworterbuch';
+export const RSS_LINK = `${DOMAIN}/feed.xml`;
+
 export const METADATA = {
     domain: DOMAIN,
     title: TITLE,
@@ -53,7 +57,7 @@ export const METADATA = {
     alternates: {
         canonical: DOMAIN,
         types: {
-            [RSS_TYPE]: `${DOMAIN}/feed.xml`,
+            [RSS_TYPE]: RSS_LINK,
         },
     },
 };

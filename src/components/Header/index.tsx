@@ -1,13 +1,14 @@
 import Link from 'next/link';
 
-import { Input } from '../ui/Input';
-import { TwitterIcon } from './TwitterIcon';
-import { TelegramIcon } from './TelegramIcon';
+import { Search } from '../ui/Search';
 import {
     RSS_LINK,
     TELEGRAM_LINK,
     TWITTER_LINK,
 } from '../../../share/constants/metadata';
+
+import { TwitterIcon } from './TwitterIcon';
+import { TelegramIcon } from './TelegramIcon';
 import { RSSIcon } from './RSSIcon';
 
 export const Header: React.FC = () => {
@@ -42,7 +43,7 @@ export const Header: React.FC = () => {
                         </a>
                     </div>
                 </section>
-                <Input />
+                <Search />
             </section>
         </header>
     );

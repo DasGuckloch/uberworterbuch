@@ -14,11 +14,16 @@ import { Loader } from '../../Loader';
 import { ShuffleIcon } from './ShuffleIcon';
 
 const GET_SEARCH_ITEMS_THROTTLE_MS = 300;
+const MINIMAL_SEARCH_VALUE_LENGTH = 3;
 
 const searchWords = async (
     searchValue: string,
     setWords: (words: IWord[]) => void
 ): Promise<void> => {
+    if (searchValue.length < MINIMAL_SEARCH_VALUE_LENGTH) {
+        return;
+    }
+
     const { words } = await searchWordsRequest(searchValue);
     setWords(words);
 };
@@ -28,7 +33,7 @@ const searchWordsDebounced = debounce(
     GET_SEARCH_ITEMS_THROTTLE_MS
 );
 
-export const Input = () => {
+export const Search = () => {
     const router = useRouter();
     const params = useParams<{ slug?: string }>();
 

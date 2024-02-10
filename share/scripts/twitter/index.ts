@@ -1,6 +1,6 @@
 import { TwitterApi } from 'twitter-api-v2';
 
-import { DOMAIN } from '../../constants/metadata';
+import { DOMAIN_PRODUCTION } from '../../constants/metadata';
 import { getRandomMessage } from '../../utils/random';
 import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
@@ -21,7 +21,7 @@ const twitterClient = new TwitterApi({
 } as any);
 
 const getTwitterMessage = (title: string, slug: string, emoji?: string) => {
-    const twitterMessageTitle = `\n\n${title}\n${DOMAIN}/${WORDS_FOLDER_NAME}/${slug}${
+    const twitterMessageTitle = `\n\n${title}\n${DOMAIN_PRODUCTION}/${WORDS_FOLDER_NAME}/${slug}${
         emoji ? `\n${emoji}` : ''
     }\n\n`;
 

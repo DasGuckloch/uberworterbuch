@@ -1,7 +1,7 @@
 import TelegramBot from 'node-telegram-bot-api';
 
 import { wordNameToSlug } from '../../utils/words';
-import { DOMAIN } from '../../constants/metadata';
+import { DOMAIN_PRODUCTION } from '../../constants/metadata';
 import { getRandomMessage } from '../../utils/random';
 import { WORDS_FOLDER_NAME } from '../../constants/word';
 import { IWord } from '../../interfaces/words';
@@ -14,7 +14,7 @@ const TELEGRAM_CHANNEL_ID = env['TELEGRAM_CHANNEL_ID'];
 const bot = new TelegramBot(TELEGRAM_BOT_TOKEN || '');
 
 const getTelegramMessage = (title: string, slug: string, emoji?: string) => {
-    const telegramMessageTitle = `\n\n[${title}](${DOMAIN}/${WORDS_FOLDER_NAME}/${slug})${
+    const telegramMessageTitle = `\n\n[${title}](${DOMAIN_PRODUCTION}/${WORDS_FOLDER_NAME}/${slug})${
         emoji ? `\n${emoji}` : ''
     }\n\n`;
 

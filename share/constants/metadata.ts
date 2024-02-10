@@ -1,6 +1,7 @@
+export const DOMAIN_PRODUCTION = 'https://uberworterbuch.de';
 export const DOMAIN =
     process.env.NODE_ENV === 'production'
-        ? 'https://uberworterbuch.de'
+        ? DOMAIN_PRODUCTION
         : 'http://localhost:3000';
 const TITLE = 'Überwörterbuch';
 const DESCRIPTION = 'Das urbanste deutsche Wörterbuch';

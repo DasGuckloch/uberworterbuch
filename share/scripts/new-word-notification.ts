@@ -16,6 +16,7 @@ const slugs = args
 (async () => {
     if (!slugs.length) {
         console.info('There are no new words.');
+        return;
     }
 
     const words = await Promise.all(slugs.map(async (slug) => getWord(slug)));

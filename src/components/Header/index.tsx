@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
             <section className="flex flex-col md:min-w-[700px] md:max-w-[700px] w-full">
                 <section className="flex flex-col gap-2 md:items-center md:flex-row">
                     <Link href="/" className="text-3xl font-bold">
-                        Überwörterbuch
+                        überwörterbuch
                     </Link>
                     <div className="flex gap-2 md:ml-auto">
                         <a

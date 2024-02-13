@@ -1,6 +1,8 @@
-name: Send new word notification
+name: Send weekly new words notification
 on:
-  deployment_status
+  schedule:
+    # at 20:00 on Friday
+    - cron:  '0 20 * * 5'
 env:
   TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
   TELEGRAM_CHANNEL_ID: ${{ secrets.TELEGRAM_CHANNEL_ID }}
@@ -10,20 +12,14 @@ env:
   TWITTER_CLIENT_ACCESS_SECRET: ${{ secrets.TWITTER_CLIENT_ACCESS_SECRET }}
 jobs:
   changed_files:
-    if: github.event.deployment_status.state == 'success' && github.event.deployment_status.environment == 'Production'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Get changed files
-        id: changed-files
-        uses: tj-actions/changed-files@v42
-        with:
-          files: './words/**'
       - name: Install
         run: |
             npm ci
       - name: Send notification
         run: |
-            npm run new-word-notification ${{ steps.changed-files.outputs.added_files }}
+            npm run weekly-new-words-notification

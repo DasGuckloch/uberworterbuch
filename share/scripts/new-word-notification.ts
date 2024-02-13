@@ -1,7 +1,8 @@
-import { sendTelegramNewWordMessage } from './telegram';
-import { sendTwitterNewWordMessage } from './twitter';
 import { getWord } from '../utils/words';
 import { WORDS_FILE_EXTENSION, WORDS_FOLDER_NAME } from '../constants/word';
+
+import { sendTelegramNewWordMessage } from './telegram';
+import { sendTwitterNewWordMessage } from './twitter';
 
 const args = process.argv;
 const slugs = args

@@ -10,7 +10,8 @@
         "lint": "next lint",
         "filename-from-word": "tsx ./share/scripts/filename-from-word.ts",
         "file-from-word": "tsx ./share/scripts/file-from-word.ts",
-        "new_word_notification": "tsx ./share/scripts/new-word-notification.ts"
+        "new-word-notification": "tsx ./share/scripts/new-word-notification.ts",
+        "weekly-new-words-notification": "tsx ./share/scripts/weekly-new-words-notification.ts"
     },
     "simple-git-hooks": {
         "pre-commit": "npm run lint"

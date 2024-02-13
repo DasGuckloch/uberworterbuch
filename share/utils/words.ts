@@ -9,10 +9,9 @@ import {
     WORDS_FOLDER_NAME,
     WORDS_PER_PAGE,
 } from '../constants/word';
-
-import { dayjs } from './dayjs';
-import { DATE_FORMAT_MDX } from '../constants/date';
 import { IWord, IWordFrontmatter } from '../interfaces/words';
+
+import { sortWordsDecreasePubDate } from './sorts';
 
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
@@ -119,7 +118,7 @@ const getNrandomWords = async (n: number): Promise<IWord[]> => {
 
 const getWordsBySlugs = async (slugs: string[]): Promise<IWord[]> => {
     const words = await Promise.all(slugs.map((slug) => getWord(slug)));
-    return sortWordsByDate(words);
+    return words.sort(sortWordsDecreasePubDate);
 };
 
 const getSlugByWordFileName = (wordFileName: string): string =>
@@ -152,14 +151,4 @@ export const compileWordMarkdown = async (
 
 const removeWordFileExtension = (wordFileName: string): string => {
     return wordFileName.split(`.${WORDS_FILE_EXTENSION}`)[0];
-};
-
-const sortWordsByDate = (words: IWord[]): IWord[] => {
-    return words.sort((a, b) =>
-        dayjs(a.frontmatter.pubDate, DATE_FORMAT_MDX).isAfter(
-            dayjs(b.frontmatter.pubDate, DATE_FORMAT_MDX)
-        )
-            ? -1
-            : 1
-    );
 };

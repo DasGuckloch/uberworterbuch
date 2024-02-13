@@ -1,10 +1,9 @@
 import { TwitterApi } from 'twitter-api-v2';
 
-import { DOMAIN_PRODUCTION } from '../../constants/metadata';
 import { getRandomMessage } from '../../utils/random';
 import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
-import { WORDS_FOLDER_NAME } from '../../constants/word';
+import { generateTwitterTitle } from '../../utils/titles';
 
 const env = process.env;
 
@@ -20,10 +19,16 @@ const twitterClient = new TwitterApi({
     accessSecret: TWITTER_CLIENT_ACCESS_SECRET,
 } as any);
 
-const getTwitterMessage = (title: string, slug: string, emoji?: string) => {
-    const twitterMessageTitle = `\n\n${title}\n${DOMAIN_PRODUCTION}/${WORDS_FOLDER_NAME}/${slug}${
-        emoji ? `\n${emoji}` : ''
-    }\n\n`;
+const getTwitterNewWordMessage = (
+    title: string,
+    slug: string,
+    emoji?: string
+) => {
+    const twitterMessageTitle = `\n\n${generateTwitterTitle(
+        title,
+        slug,
+        emoji
+    )}\n\n`;
 
     return getRandomMessage(twitterMessageTitle);
 };
@@ -36,6 +41,8 @@ export const sendTwitterNewWordMessage = async (words: IWord[]) => {
 
         console.info(`Send to Twitter the new word: ${title}`);
 
-        await twitterClient.v2.tweet(getTwitterMessage(title, slug, emoji));
+        await twitterClient.v2.tweet(
+            getTwitterNewWordMessage(title, slug, emoji)
+        );
     }
 };

@@ -5,11 +5,12 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+import { wordNameToSlug } from '../utils/words';
+
 import { getAuthor } from './getters/get-author';
 import { getDescription } from './getters/get-description';
 import { getPubDate } from './getters/get-pub-date';
 import { getTitle } from './getters/get-title';
-import { wordNameToSlug } from '../utils/words';
 
 const DESCRIPTION_PLACEHOLDER = '[DESCRIPTION]';
 

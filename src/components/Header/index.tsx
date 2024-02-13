@@ -22,17 +22,17 @@ export const Header: React.FC = () => {
                     <div className="flex gap-2 md:ml-auto">
                         <a
                             className="cursor-pointer"
-                            href={TWITTER_LINK}
-                            target="_blank"
-                        >
-                            <TwitterIcon />
-                        </a>
-                        <a
-                            className="cursor-pointer"
                             href={TELEGRAM_LINK}
                             target="_blank"
                         >
                             <TelegramIcon />
+                        </a>
+                        <a
+                            className="cursor-pointer"
+                            href={TWITTER_LINK}
+                            target="_blank"
+                        >
+                            <TwitterIcon />
                         </a>
                         <a
                             className="cursor-pointer"

@@ -1,5 +1,6 @@
-import { firebase } from '.';
 import { getLikeDocument } from './getters';
+
+import { firebase } from '.';
 
 export const setLikes = async (slug: string) => {
     const db = firebase.firestore();

@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+
+import { getLikeRequest, postLikeRequest } from '../../../client-api';
+import { WORD_ICON_SIZE } from '../../../../share/constants/icon';
+import { COLORS } from '../../../../share/constants/colors';
+
 import { CopyIcon } from './CopyIcon';
 import { LikeIcon } from './LikeIcon';
 import { CheckIcon } from './CheckIcon';
-import { getLikeRequest, postLikeRequest } from '../../../client-api';
 import { ISocialButtonsProps } from './interfaces';
-import { WORD_ICON_SIZE } from '../../../../share/constants/icon';
-import { COLORS } from '../../../../share/constants/colors';
 
 export const SocialButtons: React.FC<ISocialButtonsProps> = ({ slug }) => {
     const [likes, setLikes] = useState(0);
@@ -29,7 +31,7 @@ export const SocialButtons: React.FC<ISocialButtonsProps> = ({ slug }) => {
             setLikes(likes);
             setLikesLoaded(true);
         })();
-    }, []);
+    }, [slug]);
 
     if (!likesLoaded) {
         return (

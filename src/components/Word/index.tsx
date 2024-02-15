@@ -8,10 +8,10 @@ import {
     DATE_FORMAT_MDX,
     DATE_FORMAT_PUBLIC,
 } from '../../../share//constants/date';
+import { SocialButtons } from '../ui/SocialButtons';
 
 import { IWordProps } from './interfaces';
 
-import { SocialButtons } from '../ui/SocialButtons';
 
 export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;

@@ -11,6 +11,8 @@ import {
 
 import { IWordProps } from './interfaces';
 
+import { SocialButtons } from '../ui/SocialButtons';
+
 export const Word: React.FC<IWordProps> = ({ word }) => {
     const { frontmatter, content, slug } = word;
 
@@ -54,10 +56,13 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                     ))}
                 </section>
             )}
-            <section className="mt-4 text-xs">
+            <section className="flex mt-4 text-xs">
                 {dayjs(frontmatter.pubDate, DATE_FORMAT_MDX).format(
                     DATE_FORMAT_PUBLIC
                 )}
+                <div className="flex gap-2 ml-auto">
+                    <SocialButtons slug={slug} />
+                </div>
             </section>
         </section>
     );

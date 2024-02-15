@@ -20,3 +20,18 @@ export const getRandomWordSlugRequest = async (
 
     return res.json();
 };
+
+export const getLikeRequest = async (
+    slug: string
+): Promise<{ likes: number }> => {
+    const res = await fetch(`/${RouteEnum.WORDS}/api/like?slug=${slug}`);
+
+    return res.json();
+};
+
+export const postLikeRequest = async (slug: string) => {
+    await fetch(`/${RouteEnum.WORDS}/api/like`, {
+        method: 'POST',
+        body: JSON.stringify({ slug }),
+    });
+};

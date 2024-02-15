@@ -11,6 +11,7 @@ import { CopyIcon } from './CopyIcon';
 import { LikeIcon } from './LikeIcon';
 import { CheckIcon } from './CheckIcon';
 import { ISocialButtonsProps } from './interfaces';
+import { DOMAIN_PRODUCTION } from '../../../../share/constants/metadata';
 
 export const SocialButtons: React.FC<ISocialButtonsProps> = ({ slug }) => {
     const [likes, setLikes] = useState(0);
@@ -63,7 +64,9 @@ export const SocialButtons: React.FC<ISocialButtonsProps> = ({ slug }) => {
             <button
                 disabled={copyClicked}
                 onClick={async () => {
-                    await navigator.clipboard.writeText(document.location.href);
+                    await navigator.clipboard.writeText(
+                        `${DOMAIN_PRODUCTION}/words/${slug}`
+                    );
                     setCopyClicked(true);
                 }}
             >

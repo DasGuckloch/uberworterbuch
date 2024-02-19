@@ -6,12 +6,12 @@ import Skeleton from 'react-loading-skeleton';
 import { getLikeRequest, postLikeRequest } from '../../../client-api';
 import { WORD_ICON_SIZE } from '../../../../share/constants/icon';
 import { COLORS } from '../../../../share/constants/colors';
+import { DOMAIN_PRODUCTION } from '../../../../share/constants/metadata';
 
 import { CopyIcon } from './CopyIcon';
 import { LikeIcon } from './LikeIcon';
 import { CheckIcon } from './CheckIcon';
 import { ISocialButtonsProps } from './interfaces';
-import { DOMAIN_PRODUCTION } from '../../../../share/constants/metadata';
 
 export const SocialButtons: React.FC<ISocialButtonsProps> = ({ slug }) => {
     const [likes, setLikes] = useState(0);

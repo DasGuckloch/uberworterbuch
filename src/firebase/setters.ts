@@ -5,17 +5,16 @@ import { firebase } from '.';
 export const setLikes = async (slug: string) => {
     const db = firebase.firestore();
 
-    const likeDocument = await getLikeDocument(slug);
+    await db.runTransaction(async (transaction) => {
+        const likeDocument = await getLikeDocument(slug, db)
 
-    if (!likeDocument) {
-        await db.collection('likes').add({
-            slug,
-            likes: 1,
-        });
-    } else {
-        await db
-            .collection('likes')
-            .doc(likeDocument.id)
-            .update({ likes: likeDocument.data().likes + 1 });
-    }
+        if (!likeDocument) {
+            await db.collection('likes').add({
+                slug,
+                likes: 1,
+            });
+        } else {            
+            transaction.update(likeDocument.ref, { likes: likeDocument.data().likes + 1 });
+        }
+    });
 };

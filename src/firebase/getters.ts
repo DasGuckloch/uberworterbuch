@@ -1,6 +1,12 @@
 import { firebase } from '.';
 
-export const getLikeDocument = async (slug: string, db = firebase.firestore()) => {
+export const getLikeDocument = async (slug: string) => {
+    if (!firebase) {
+        return null;
+    }
+
+    const db = firebase.firestore();
+
     const docs = (await db.collection('likes').where('slug', '==', slug).get())
         .docs;
 

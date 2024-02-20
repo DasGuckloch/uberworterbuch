@@ -10,7 +10,7 @@ export const setLikes = async (slug: string) => {
     const db = firebase.firestore();
 
     await db.runTransaction(async (transaction) => {
-        const likeDocument = await getLikeDocument(slug);
+        const likeDocument = await getLikeDocument(slug, db);
 
         if (!likeDocument) {
             await db.collection('likes').add({

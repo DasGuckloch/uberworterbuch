@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { Search } from '../ui/Search';
 import {
+    REDDIT_LINK,
     RSS_LINK,
     TELEGRAM_LINK,
     TWITTER_LINK,
@@ -10,6 +11,7 @@ import {
 import { TwitterIcon } from './TwitterIcon';
 import { TelegramIcon } from './TelegramIcon';
 import { RSSIcon } from './RSSIcon';
+import { RedditIcon } from './RedditIcon';
 
 export const Header: React.FC = () => {
     return (
@@ -22,10 +24,10 @@ export const Header: React.FC = () => {
                     <div className="flex gap-2 md:ml-auto">
                         <a
                             className="cursor-pointer"
-                            href={TELEGRAM_LINK}
+                            href={REDDIT_LINK}
                             target="_blank"
                         >
-                            <TelegramIcon />
+                            <RedditIcon />
                         </a>
                         <a
                             className="cursor-pointer"
@@ -33,6 +35,13 @@ export const Header: React.FC = () => {
                             target="_blank"
                         >
                             <TwitterIcon />
+                        </a>
+                        <a
+                            className="cursor-pointer"
+                            href={TELEGRAM_LINK}
+                            target="_blank"
+                        >
+                            <TelegramIcon />
                         </a>
                         <a
                             className="cursor-pointer"

@@ -3,6 +3,7 @@ import { WORDS_FILE_EXTENSION, WORDS_FOLDER_NAME } from '../constants/word';
 
 import { sendTelegramNewWordMessage } from './telegram';
 import { sendTwitterNewWordMessage } from './twitter';
+import { sendRedditNewWordMessage } from './reddit';
 
 const args = process.argv;
 const slugs = args
@@ -24,4 +25,5 @@ const slugs = args
 
     await sendTelegramNewWordMessage(words);
     await sendTwitterNewWordMessage(words);
+    await sendRedditNewWordMessage(words);
 })();

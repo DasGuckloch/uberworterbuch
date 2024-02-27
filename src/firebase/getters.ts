@@ -1,4 +1,5 @@
 import type { Firestore } from 'firebase-admin/firestore';
+
 import { firebase } from '.';
 
 export const getLikeDocument = async (slug: string, db?: Firestore) => {

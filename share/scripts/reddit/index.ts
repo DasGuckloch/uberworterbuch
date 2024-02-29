@@ -10,13 +10,15 @@ const env = process.env;
 const REDDIT_USER_AGENT = env['REDDIT_USER_AGENT'] || '';
 const REDDIT_CLIENT_ID = env['REDDIT_CLIENT_ID'];
 const REDDIT_CLIENT_SECRET = env['REDDIT_CLIENT_SECRET'];
-const REDDIT_REFRESH_TOKEN = env['REDDIT_REFRESH_TOKEN'];
+const REDDIT_USERNAME = env['REDDIT_USERNAME'];
+const REDDIT_PASSWORD = env['REDDIT_PASSWORD'];
 
 const r = new snoowrap({
     userAgent: REDDIT_USER_AGENT,
     clientId: REDDIT_CLIENT_ID,
     clientSecret: REDDIT_CLIENT_SECRET,
-    refreshToken: REDDIT_REFRESH_TOKEN,
+    username: REDDIT_USERNAME,
+    password: REDDIT_PASSWORD,
 });
 
 export const sendRedditNewWordMessage = async (words: IWord[]) => {

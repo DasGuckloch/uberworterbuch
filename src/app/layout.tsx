@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import 'react-loading-skeleton/dist/skeleton.css';
 
 import { Inter } from 'next/font/google';
 

@@ -8,13 +8,15 @@ import {
     DATE_FORMAT_MDX,
     DATE_FORMAT_PUBLIC,
 } from '../../../share//constants/date';
-import { SocialButtons } from '../ui/SocialButtons';
+import { SocialButtons } from '../SocialButtons';
+import { getLikes } from '../../firebase/getters';
 
 import { IWordProps } from './interfaces';
 
-
-export const Word: React.FC<IWordProps> = ({ word }) => {
+export const Word: React.FC<IWordProps> = async ({ word }) => {
     const { frontmatter, content, slug } = word;
+
+    const likes = await getLikes(word.slug);
 
     return (
         <section className="bg-main-yellow border-4 border-main-black rounded-lg p-6">
@@ -61,7 +63,7 @@ export const Word: React.FC<IWordProps> = ({ word }) => {
                     DATE_FORMAT_PUBLIC
                 )}
                 <div className="flex gap-2 ml-auto">
-                    <SocialButtons slug={slug} />
+                    <SocialButtons slug={slug} likes={likes} />
                 </div>
             </section>
         </section>

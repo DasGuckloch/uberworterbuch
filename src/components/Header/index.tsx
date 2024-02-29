@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { Search } from '../ui/Search';
+import { Search } from '../client/Search';
 import {
     REDDIT_LINK,
     RSS_LINK,

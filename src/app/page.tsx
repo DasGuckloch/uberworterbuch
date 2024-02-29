@@ -1,7 +1,7 @@
 import { WORDS_PER_PAGE } from '../../share/constants/word';
 import { getNWords, getNextWords } from '../../share/utils/words';
 import { Word } from '../components/Word';
-import { MoreWords } from '../components/ui/MoreWords';
+import { MoreWords } from '../components/client/MoreWords';
 import { IWord } from '../../share/interfaces/words';
 
 const WordArticle = (word: IWord) => {

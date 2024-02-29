@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { METADATA } from '../../../../share/constants/metadata';
 import { Word } from '../../../components/Word';
 import { RouteEnum } from '../../../../share/enums/route';
-import { Video } from '../../../components/ui/Video';
+import { Video } from '../../../components/client/Video';
 import { getWord } from '../../../../share/utils/words';
 
 import { IWordProps } from './interfaces';

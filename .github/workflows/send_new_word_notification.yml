@@ -26,6 +26,7 @@ jobs:
         uses: tj-actions/changed-files@v42
         with:
           files: './words/**'
+          since_last_remote_commit: 'true'
       - name: Install
         run: |
             npm ci

@@ -4,19 +4,13 @@ import { getRandomMessage } from '../../utils/random';
 import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
 import { generateTwitterTitle } from '../../utils/titles';
-
-const env = process.env;
-
-const TWITTER_CLIENT_APP_KEY = env['TWITTER_CLIENT_APP_KEY'];
-const TWITTER_CLIENT_APP_SECRET = env['TWITTER_CLIENT_APP_SECRET'];
-const TWITTER_CLIENT_ACCESS_TOKEN = env['TWITTER_CLIENT_ACCESS_TOKEN'];
-const TWITTER_CLIENT_ACCESS_SECRET = env['TWITTER_CLIENT_ACCESS_SECRET'];
+import { CONFIG } from '../../config';
 
 const twitterClient = new TwitterApi({
-    appKey: TWITTER_CLIENT_APP_KEY,
-    appSecret: TWITTER_CLIENT_APP_SECRET,
-    accessToken: TWITTER_CLIENT_ACCESS_TOKEN,
-    accessSecret: TWITTER_CLIENT_ACCESS_SECRET,
+    appKey: CONFIG.twitter.clientAppKey,
+    appSecret: CONFIG.twitter.clientAppSecret,
+    accessToken: CONFIG.twitter.clientAccessToken,
+    accessSecret: CONFIG.twitter.clientAccessSecret,
 } as any);
 
 const getTwitterNewWordMessage = (

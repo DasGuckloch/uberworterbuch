@@ -4,21 +4,14 @@ import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
 import { DOMAIN_PRODUCTION } from '../../constants/metadata';
 import { WORDS_FOLDER_NAME } from '../../constants/word';
-
-const env = process.env;
-
-const REDDIT_USER_AGENT = env['REDDIT_USER_AGENT'] || '';
-const REDDIT_CLIENT_ID = env['REDDIT_CLIENT_ID'];
-const REDDIT_CLIENT_SECRET = env['REDDIT_CLIENT_SECRET'];
-const REDDIT_USERNAME = env['REDDIT_USERNAME'];
-const REDDIT_PASSWORD = env['REDDIT_PASSWORD'];
+import { CONFIG } from '../../config';
 
 const r = new snoowrap({
-    userAgent: REDDIT_USER_AGENT,
-    clientId: REDDIT_CLIENT_ID,
-    clientSecret: REDDIT_CLIENT_SECRET,
-    username: REDDIT_USERNAME,
-    password: REDDIT_PASSWORD,
+    userAgent: CONFIG.reddit.userAgent || '',
+    clientId: CONFIG.reddit.clientId,
+    clientSecret: CONFIG.reddit.clientSecret,
+    username: CONFIG.reddit.username,
+    password: CONFIG.reddit.password,
 });
 
 export const sendRedditNewWordMessage = async (words: IWord[]) => {

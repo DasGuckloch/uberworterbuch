@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 
+import { DOMAIN_PRODUCTION } from '../../../../share/constants/metadata';
+
 import { CheckIcon } from './CheckIcon';
 import { CopyIcon } from './CopyIcon';
-
-import { DOMAIN_PRODUCTION } from '../../../../share/constants/metadata';
 import { ICopyButtonProps } from './interfaces';
 
 export const CopyButton: React.FC<ICopyButtonProps> = ({ slug }) => {

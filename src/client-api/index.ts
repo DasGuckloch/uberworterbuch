@@ -27,3 +27,15 @@ export const postLikeRequest = async (slug: string) => {
         body: JSON.stringify({ slug }),
     });
 };
+
+export const getYourLanguageTextRequest = async (
+    language: string,
+    slug: string,
+    title: string
+): Promise<{ text: string }> => {
+    const res = await fetch(
+        `/${RouteEnum.WORDS}/api/your-language-text?language=${language}&slug=${slug}&title=${title}`
+    );
+
+    return res.json();
+};

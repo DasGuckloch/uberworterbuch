@@ -5,13 +5,9 @@ import { getRandomMessage } from '../../utils/random';
 import { IWord } from '../../interfaces/words';
 import { trimTemplateString } from '../../utils/strings';
 import { generateTelegramTitle } from '../../utils/titles';
+import { CONFIG } from '../../config';
 
-const env = process.env;
-
-const TELEGRAM_BOT_TOKEN = env['TELEGRAM_BOT_TOKEN'];
-const TELEGRAM_CHANNEL_ID = env['TELEGRAM_CHANNEL_ID'];
-
-const bot = new TelegramBot(TELEGRAM_BOT_TOKEN || '');
+const bot = new TelegramBot(CONFIG.telegram.botToken || '');
 
 const getTelegramNewWordMessage = (
     title: string,
@@ -36,7 +32,7 @@ export const sendTelegramNewWordMessage = async (words: IWord[]) => {
         console.info(`Send to Telegram the new word: ${title}`);
 
         await bot.sendMessage(
-            TELEGRAM_CHANNEL_ID || '',
+            CONFIG.telegram.channelId || '',
             getTelegramNewWordMessage(title, slug, emoji),
             {
                 parse_mode: 'Markdown',
@@ -65,7 +61,7 @@ export const sendTelegramWeeklyNewWordsMessage = async (words: IWord[]) => {
 
     console.info(`Send to Telegram the weekly new words`);
 
-    await bot.sendMessage(TELEGRAM_CHANNEL_ID || '', message, {
+    await bot.sendMessage(CONFIG.telegram.channelId || '', message, {
         parse_mode: 'Markdown',
         disable_web_page_preview: true,
     });

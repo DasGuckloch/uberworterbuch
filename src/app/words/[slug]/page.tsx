@@ -5,25 +5,32 @@ import { Word } from '../../../components/Word';
 import { RouteEnum } from '../../../../share/enums/route';
 import { Video } from '../../../components/client/Video';
 import { getWord } from '../../../../share/utils/words';
+import { YourLanguage } from '../../../components/client/YourLanguage';
 
 import { IWordProps } from './interfaces';
 
-export default async function IWordProps({ params }: IWordProps) {
+export default async function IWord({ params }: IWordProps) {
     const word = await getWord(params.slug);
 
     return (
         <>
-            <section className="mb-8">
+            <section className="mb-12">
                 <Word word={word} />
             </section>
             {word.frontmatter.video && (
-                <section>
-                    <span className="block font-bold mb-2 text-main-blue">
-                        How does it sound?
+                <section className="mb-8">
+                    <span className="block text-3xl font-bold mb-4 text-main-blue">
+                        Wie klingt es auf Deutsch?
                     </span>
                     <Video word={word} />
                 </section>
             )}
+            <section>
+                <span className="block text-3xl font-bold mb-4 text-main-blue">
+                    Wie klingt es in Ihrer Sprache?
+                </span>
+                <YourLanguage slug={word.slug} title={word.frontmatter.title} />
+            </section>
         </>
     );
 }

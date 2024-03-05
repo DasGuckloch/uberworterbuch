@@ -1,6 +1,6 @@
 import admin from 'firebase-admin';
 
-import { CONFIG } from '../../share/config';
+import { CONFIG } from '../../config';
 
 const FIREBASE_PRIVATE_KEY = CONFIG.firebase.privateKey;
 

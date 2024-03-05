@@ -24,7 +24,9 @@ export const CopyButton: React.FC<ICopyButtonProps> = ({ slug }) => {
             disabled={copyClicked}
             onClick={async () => {
                 await navigator.clipboard.writeText(
-                    `${DOMAIN_PRODUCTION}/words/${slug}`
+                    slug
+                        ? `${DOMAIN_PRODUCTION}/words/${slug}`
+                        : window.location.href
                 );
                 setCopyClicked(true);
             }}

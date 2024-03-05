@@ -5,9 +5,22 @@ import { Word } from '../../../components/Word';
 import { RouteEnum } from '../../../../share/enums/route';
 import { Video } from '../../../components/client/Video';
 import { getWord } from '../../../../share/utils/words';
+import { getYourLanguageWordText } from '../../../../share/utils/ai';
 import { YourLanguage } from '../../../components/client/YourLanguage';
 
 import { IWordProps } from './interfaces';
+
+const getYourLanguageWord = async (
+    language: string,
+    slug: string,
+    title: string
+) => {
+    'use server';
+
+    const { word, text } = await getYourLanguageWordText(language, slug, title);
+
+    return <Word word={word} language={language} languageText={text} />;
+};
 
 export default async function IWord({ params }: IWordProps) {
     const word = await getWord(params.slug);
@@ -29,7 +42,11 @@ export default async function IWord({ params }: IWordProps) {
                 <span className="block text-3xl font-bold mb-4 text-main-blue">
                     Wie klingt es in Ihrer Sprache?
                 </span>
-                <YourLanguage slug={word.slug} title={word.frontmatter.title} />
+                <YourLanguage
+                    slug={word.slug}
+                    title={word.frontmatter.title}
+                    getYourLanguageWord={getYourLanguageWord}
+                />
             </section>
         </>
     );

@@ -1,7 +1,7 @@
 import { NextRequest } from 'next/server';
 import { revalidatePath } from 'next/cache';
 
-import { setLikes } from '../../../../firebase/setters';
+import { setLikes } from '../../../../../share/utils/firebase/setters';
 
 export async function POST(request: NextRequest) {
     const { slug } = await request.json();

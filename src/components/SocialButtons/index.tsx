@@ -6,7 +6,12 @@ import { ISocialButtonsProps } from './interfaces';
 export const SocialButtons: React.FC<ISocialButtonsProps> = ({
     slug,
     likes,
+    onlyCopy,
 }) => {
+    if (onlyCopy) {
+        return <CopyButton />;
+    }
+
     return (
         <>
             <Likes slug={slug} likes={likes} />

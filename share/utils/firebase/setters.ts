@@ -1,4 +1,4 @@
-import { getLikeDocument, getYourLanguageDocument } from './getters';
+import { getLikeDocument } from './getters';
 import { FirebaseCollectionEnum } from './enums';
 
 import { firebase } from '.';

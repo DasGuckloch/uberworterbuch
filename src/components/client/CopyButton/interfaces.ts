@@ -1,3 +1,3 @@
 export interface ICopyButtonProps {
-    readonly slug: string;
+    readonly slug?: string;
 }

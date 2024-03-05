@@ -14,7 +14,7 @@
         "weekly-new-words-notification": "tsx ./share/scripts/weekly-new-words-notification.ts"
     },
     "simple-git-hooks": {
-        "pre-commit": "npm run lint"
+        "pre-commit": "npm run build ; npm run lint"
     },
     "dependencies": {
         "@mdx-js/loader": "^3.0.0",

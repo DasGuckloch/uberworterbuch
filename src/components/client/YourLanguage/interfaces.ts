@@ -7,5 +7,5 @@ export interface IYourLanguageProps {
         language: string,
         slug: string,
         title: string
-    ) => Promise<ReactNode>;
+    ) => Promise<{ component: ReactNode }>;
 }

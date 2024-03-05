@@ -42,7 +42,12 @@ export const YourLanguage: React.FC<IYourLanguageProps> = ({
             let word;
 
             try {
-                word = await getYourLanguageWord(selectedLanguage, slug, title);
+                const { component } = await getYourLanguageWord(
+                    selectedLanguage,
+                    slug,
+                    title
+                );
+                word = component;
             } catch (error) {
                 const urlParams = new URLSearchParams(window.location.search);
                 urlParams.delete(SearchParamEnum.LANGUAGE);

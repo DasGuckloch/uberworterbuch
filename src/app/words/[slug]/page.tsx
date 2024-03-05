@@ -19,7 +19,9 @@ const getYourLanguageWord = async (
 
     const { word, text } = await getYourLanguageWordText(language, slug, title);
 
-    return <Word word={word} language={language} languageText={text} />;
+    return {
+        component: <Word word={word} language={language} languageText={text} />,
+    };
 };
 
 export default async function IWord({ params }: IWordProps) {

@@ -15,33 +15,17 @@ import { sortWordsDecreasePubDate } from './sorts';
 
 const wordsFolderPath = path.join(process.cwd(), WORDS_FOLDER_NAME);
 
-let allWordsCached: IWord[] = [];
-
 export const getAllWords = async (): Promise<IWord[]> => {
-    if (!!allWordsCached.length) {
-        return allWordsCached;
-    }
-
     const wordFileNames = await fs.readdir(wordsFolderPath);
 
     const slugs = wordFileNames.map(getSlugByWordFileName);
 
     const allWords = await getWordsBySlugs(slugs);
 
-    allWordsCached = allWords;
-
     return allWords;
 };
 
 export const getWord = async (slug: string): Promise<IWord> => {
-    const wordCached = allWordsCached.find(
-        (wordCached) => wordCached.slug === slug
-    );
-
-    if (!!wordCached) {
-        return wordCached;
-    }
-
     const wordFilePath = getWordFilePath(slug);
     const markdown = await getWordMarkdown(wordFilePath);
 

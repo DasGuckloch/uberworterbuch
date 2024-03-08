@@ -33,7 +33,7 @@ export default async function IWord({ params }: IWordProps) {
                 <Word word={word} />
             </section>
             {word.frontmatter.video && (
-                <section className="mb-8">
+                <section className="mb-8 print:hidden">
                     <span className="block text-3xl font-bold mb-4 text-main-blue">
                         Wie klingt es auf Deutsch?
                     </span>

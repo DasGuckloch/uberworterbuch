@@ -53,17 +53,21 @@ export const Word: React.FC<IWordProps> = async ({
                 <>
                     {frontmatter.relatedWords && (
                         <section className="flex flex-wrap mt-4">
-                            {frontmatter.relatedWords.map((relatedWord) => (
-                                <a
-                                    key={relatedWord}
-                                    href={`/${RouteEnum.WORDS}/${wordNameToSlug(
-                                        relatedWord
-                                    )}`}
-                                    className="mr-2 text-main-blue"
-                                >
-                                    {relatedWord}
-                                </a>
-                            ))}
+                            <ul className="list-none flex flex-wrap gap-x-4">
+                                {frontmatter.relatedWords.map((relatedWord) => (
+                                    <li key={relatedWord}>
+                                        <a
+
+                                            href={`/${RouteEnum.WORDS}/${wordNameToSlug(
+                                                relatedWord
+                                            )}`}
+                                            className="text-main-blue"
+                                        >
+                                            {relatedWord}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
                         </section>
                     )}
                     {frontmatter.relatedLinks && (

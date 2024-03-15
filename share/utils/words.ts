@@ -88,6 +88,7 @@ export const wordNameToSlug = (word: string): string => {
     result = result.replace(/[äÄ]/g, 'a');
     result = result.replace(/[öÖ]/g, 'o');
     result = result.replace(/[ßẞ]/g, 'ss');
+    result = result.replace(/[^a-zA-Z0-9-]/g, '');
 
     return result;
 };

@@ -25,7 +25,7 @@ export const Word: React.FC<IWordProps> = async ({
     return (
         <section className="bg-main-yellow border-4 border-main-black rounded-lg p-6">
             <section className="flex flex-col justify-between items-start gap-4 mdx-content">
-                <h1 className="outfit text-2xl md:text-5xl lg:text-7xl">
+                <h1 className="outfit text-2xl md:text-5xl lg:text-6xl">
                     <a
                         href={
                             language

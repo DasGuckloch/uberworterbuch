@@ -4,7 +4,7 @@ import { METADATA } from '../../../../share/constants/metadata';
 import { Word } from '../../../components/Word';
 import { RouteEnum } from '../../../../share/enums/route';
 import { Video } from '../../../components/client/Video';
-import { getWord } from '../../../../share/utils/words';
+import { getAllWords, getWord } from '../../../../share/utils/words';
 import { getYourLanguageWordText } from '../../../../share/utils/ai';
 import { YourLanguage } from '../../../components/client/YourLanguage';
 
@@ -42,7 +42,7 @@ export default async function IWord({ params }: IWordProps) {
             )}
             <section>
                 <span className="block text-3xl font-bold mb-4 text-main-blue">
-                    Wie klingt es in Ihrer Sprache?
+                    Wie klingt es in anderen Sprachen?
                 </span>
                 <YourLanguage
                     slug={word.slug}
@@ -52,6 +52,12 @@ export default async function IWord({ params }: IWordProps) {
             </section>
         </>
     );
+}
+
+export async function generateStaticParams() {
+    const words = await getAllWords();
+
+    return words.map(({ slug }) => ({ slug }));
 }
 
 export async function generateMetadata({

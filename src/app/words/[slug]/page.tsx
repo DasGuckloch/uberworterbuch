@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 import { METADATA } from '../../../../share/constants/metadata';
 import { Word } from '../../../components/Word';
@@ -40,16 +41,18 @@ export default async function IWord({ params }: IWordProps) {
                     <Video word={word} />
                 </section>
             )}
-            <section>
-                <span className="block text-3xl font-bold mb-4 text-main-blue">
-                    Wie klingt es in anderen Sprachen?
-                </span>
-                <YourLanguage
-                    slug={word.slug}
-                    title={word.frontmatter.title}
-                    getYourLanguageWord={getYourLanguageWord}
-                />
-            </section>
+            <Suspense fallback={null}>
+                <section>
+                    <span className="block text-3xl font-bold mb-4 text-main-blue">
+                        Wie klingt es in anderen Sprachen?
+                    </span>
+                    <YourLanguage
+                        slug={word.slug}
+                        title={word.frontmatter.title}
+                        getYourLanguageWord={getYourLanguageWord}
+                    />
+                </section>
+            </Suspense>
         </>
     );
 }

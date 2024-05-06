@@ -1,7 +1,6 @@
 import TelegramBot from 'node-telegram-bot-api';
 
 import { wordNameToSlug } from '../../utils/words';
-import { getRandomMessage } from '../../utils/random';
 import { IWord } from '../../interfaces/words';
 import { trimTemplateString } from '../../utils/strings';
 import { generateTelegramTitle } from '../../utils/titles';
@@ -14,13 +13,7 @@ const getTelegramNewWordMessage = (
     slug: string,
     emoji?: string
 ) => {
-    const telegramMessageTitle = `\n\n${generateTelegramTitle(
-        title,
-        slug,
-        emoji
-    )}\n\n`;
-
-    return getRandomMessage(telegramMessageTitle);
+    return generateTelegramTitle(title, slug, emoji);
 };
 
 export const sendTelegramNewWordMessage = async (words: IWord[]) => {

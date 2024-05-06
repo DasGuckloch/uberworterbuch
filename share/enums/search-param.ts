@@ -1,3 +1,3 @@
 export enum SearchParamEnum {
-    LANGUAGE = 'language',
+    SLUG = 'slug',
 }

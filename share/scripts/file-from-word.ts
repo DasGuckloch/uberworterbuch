@@ -6,6 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import { wordNameToSlug } from '../utils/words';
+import { WORDS_FOLDER_NAME } from '../constants/word';
 
 import { getAuthor } from './getters/get-author';
 import { getDescription } from './getters/get-description';
@@ -27,7 +28,13 @@ author: ${getAuthor()}
 ---
 `;
 
-const filePath = join(__dirname, '..', '..', 'words', `${fileName}.mdx`);
+const filePath = join(
+    __dirname,
+    '..',
+    '..',
+    WORDS_FOLDER_NAME,
+    `${fileName}.mdx`
+);
 writeFileSync(filePath, fileTemplate);
 
 console.info(`Word: "${word}"`);

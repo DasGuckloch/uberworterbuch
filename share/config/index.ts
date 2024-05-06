@@ -18,10 +18,4 @@ export const CONFIG = {
         username: env['REDDIT_USERNAME'],
         password: env['REDDIT_PASSWORD'],
     },
-    firebase: {
-        privateKey: env['FIREBASE_PRIVATE_KEY'],
-    },
-    openai: {
-        apiKey: env['OPENAI_API_KEY'],
-    },
 };

@@ -1,29 +1,13 @@
+import { ApiRouteEnum } from '../../share/enums/api';
 import { RouteEnum } from '../../share/enums/route';
-import { IWord } from '../../share/interfaces/words';
-
-export const searchWordsRequest = async (
-    searchValue: string
-): Promise<{ words: IWord[] }> => {
-    const res = await fetch(
-        `/${RouteEnum.WORDS}/api/search?search-value=${searchValue}`
-    );
-
-    return res.json();
-};
+import { SearchParamEnum } from '../../share/enums/search-param';
 
 export const getRandomWordSlugRequest = async (
-    currentSlug?: string
+    slug?: string
 ): Promise<{ slug: string }> => {
     const res = await fetch(
-        `/${RouteEnum.WORDS}/api/random?current-slug=${currentSlug}`
+        `/${RouteEnum.WORDS}/${ApiRouteEnum.API}/${ApiRouteEnum.RANDOM}?${SearchParamEnum.SLUG}=${slug}`
     );
 
     return res.json();
-};
-
-export const postLikeRequest = async (slug: string) => {
-    await fetch(`/${RouteEnum.WORDS}/api/like`, {
-        method: 'POST',
-        body: JSON.stringify({ slug }),
-    });
 };

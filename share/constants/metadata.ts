@@ -3,7 +3,7 @@ export const DOMAIN =
     process.env.NODE_ENV === 'production'
         ? DOMAIN_PRODUCTION
         : 'http://localhost:3000';
-const TITLE = 'Überwörterbuch';
+export const TITLE = 'Überwörterbuch';
 const DESCRIPTION = 'Das urbanste deutsche Wörterbuch';
 const LANGUAGE_CODE = 'de-de';
 const IMAGES_GH_PATH =

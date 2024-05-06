@@ -1,6 +1,5 @@
 import { TwitterApi } from 'twitter-api-v2';
 
-import { getRandomMessage } from '../../utils/random';
 import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
 import { generateTwitterTitle } from '../../utils/titles';
@@ -18,13 +17,7 @@ const getTwitterNewWordMessage = (
     slug: string,
     emoji?: string
 ) => {
-    const twitterMessageTitle = `\n\n${generateTwitterTitle(
-        title,
-        slug,
-        emoji
-    )}\n\n`;
-
-    return getRandomMessage(twitterMessageTitle);
+    return generateTwitterTitle(title, slug, emoji);
 };
 
 export const sendTwitterNewWordMessage = async (words: IWord[]) => {

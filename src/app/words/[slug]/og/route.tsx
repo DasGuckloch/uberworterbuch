@@ -7,12 +7,14 @@ import {
 } from '../../../../../share/constants/metadata';
 import { ColorEnum } from '../../../../../share/enums/color';
 import { getThemeColor } from '../../../../../share//utils/tailwind';
+import { ApiRouteEnum } from '../../../../../share/enums/api';
+import { SearchParamEnum } from '../../../../../share/enums/search-param';
 
 export const runtime = 'edge';
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
-    const slug = searchParams.get('slug');
+    const slug = searchParams.get(SearchParamEnum.SLUG);
 
     if (!slug) {
         return;
@@ -20,7 +22,7 @@ export async function GET(request: Request) {
 
     const { word } = await (
         await fetch(
-            `${METADATA.domain}/${RouteEnum.WORDS}/api/word?slug=${slug}`
+            `${METADATA.domain}/${RouteEnum.WORDS}/${ApiRouteEnum.API}/${ApiRouteEnum.WORD}?${SearchParamEnum.SLUG}=${slug}`
         )
     ).json();
 

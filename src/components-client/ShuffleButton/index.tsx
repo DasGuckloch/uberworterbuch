@@ -34,7 +34,7 @@ export const ShuffleButton = () => {
             {isLoading ? (
                 <Loader color={ColorEnum.MAIN_WHITE} />
             ) : (
-                <Icon name={IconNameEnum.SHUFFLE} />
+                <Icon name={IconNameEnum.SHUFFLE} title="Zufälliges Wort" />
             )}
         </button>
     );

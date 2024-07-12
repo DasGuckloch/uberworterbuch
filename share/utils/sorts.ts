@@ -16,3 +16,11 @@ export const sortWordsDecreasePubDate = (a: IWord, b: IWord) =>
     )
         ? -1
         : 1;
+
+export const sortGermanWordsByTitle = (words: IWord[]): IWord[] => {
+    const collator = new Intl.Collator('de', { sensitivity: 'base' });
+
+    return words.sort((a, b) =>
+        collator.compare(a.frontmatter.title, b.frontmatter.title)
+    );
+};

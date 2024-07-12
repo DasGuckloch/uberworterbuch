@@ -10,6 +10,7 @@ import { RSSIcon } from './icons/RSSIcon';
 import { RedditIcon } from './icons/RedditIcon';
 import { SearchIcon } from './icons/SearchIcon';
 import { ShuffleIcon } from './icons/ShuffleIcon';
+import { TOCIcon } from './icons/TOCIcon';
 import { TelegramIcon } from './icons/TelegramIcon';
 import { TwitterIcon } from './icons/TwitterIcon';
 import { IconProps } from './interfaces';
@@ -55,6 +56,10 @@ const getIcon = (name: IconNameEnum, size: IconSizeEnum, color: ColorEnum) => {
         return <SearchIcon color={COLORS[color]} />;
     }
 
+    if (name === IconNameEnum.TOC) {
+        return <TOCIcon color={COLORS[color]} />;
+    }
+
     return null;
 };
 
@@ -62,9 +67,10 @@ export const Icon: React.FC<IconProps> = ({
     name,
     color = ColorEnum.MAIN_WHITE,
     size = IconSizeEnum.M,
+    title,
 }) => {
     return (
-        <div className={size === IconSizeEnum.M ? 'w-28' : 'w-5'}>
+        <div className={size === IconSizeEnum.M ? 'w-28' : 'w-5'} title={title}>
             {getIcon(name, size, color)}
         </div>
     );

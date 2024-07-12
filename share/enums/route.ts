@@ -3,4 +3,5 @@ export enum RouteEnum {
     WORDS = 'words',
     SEARCH = 'search',
     ABOUT = 'about',
+    TOC = 'toc',
 }

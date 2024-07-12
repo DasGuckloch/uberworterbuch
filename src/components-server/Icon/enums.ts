@@ -9,6 +9,7 @@ export enum IconNameEnum {
     SHUFFLE = 'shuffle',
     LOADER = 'loader',
     SEARCH = 'search',
+    TOC = 'toc',
 }
 
 export enum IconSizeEnum {

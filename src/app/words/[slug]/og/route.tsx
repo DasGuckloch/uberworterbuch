@@ -42,7 +42,6 @@ export async function GET(request: Request) {
                 <div
                     style={{
                         fontSize: 96,
-                        borderBottom: '7px',
                         color: getThemeColor(ColorEnum.MAIN_RED),
                         marginBottom: '10',
                     }}
@@ -52,12 +51,13 @@ export async function GET(request: Request) {
                 <div
                     style={{
                         display: 'flex',
+                        alignItems: 'flex-end',
                         marginTop: 'auto',
                     }}
                 >
                     <div
                         style={{
-                            fontSize: 32,
+                            fontSize: 42,
                             color: getThemeColor(ColorEnum.MAIN_BLACK),
                             paddingRight: '24px',
                             alignItems: 'flex-end',

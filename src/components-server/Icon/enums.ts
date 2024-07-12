@@ -2,6 +2,7 @@ export enum IconNameEnum {
     REDDIT = 'reddit',
     TWITTER = 'twitter',
     TELEGRAM = 'telegram',
+    INSTAGRAM = 'instagram',
     RSS = 'rss',
     COPY = 'copy',
     CHECK = 'check',

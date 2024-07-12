@@ -4,6 +4,7 @@ import { ColorEnum } from '../../../share/enums/color';
 import { IconNameEnum, IconSizeEnum } from './enums';
 import { CheckIcon } from './icons/CheckIcon';
 import { CopyIcon } from './icons/CopyIcon';
+import { InstagramIcon } from './icons/InstagramIcon';
 import { LoaderIcon } from './icons/LoaderIcon';
 import { RSSIcon } from './icons/RSSIcon';
 import { RedditIcon } from './icons/RedditIcon';
@@ -24,6 +25,10 @@ const getIcon = (name: IconNameEnum, size: IconSizeEnum, color: ColorEnum) => {
 
     if (name === IconNameEnum.REDDIT) {
         return <RedditIcon color={COLORS[color]} />;
+    }
+
+    if (name === IconNameEnum.INSTAGRAM) {
+        return <InstagramIcon color={COLORS['main-red']} />;
     }
 
     if (name === IconNameEnum.RSS) {

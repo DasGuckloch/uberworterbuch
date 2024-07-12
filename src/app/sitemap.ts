@@ -11,6 +11,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         {
             url: `${METADATA.domain}`,
         },
+        {
+            url: `${METADATA.domain}/${RouteEnum.ABOUT}`,
+        },
         ...allWords.map((word) => ({
             url: `${METADATA.domain}/${RouteEnum.WORDS}/${word.slug}`,
         })),

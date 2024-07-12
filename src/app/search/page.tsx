@@ -1,12 +1,11 @@
 import { Search } from '../../components-client/Search';
 import { getAllWords } from '../../../share/utils/words';
-import { MINIMAL_SEARCH_VALUE_LENGTH } from '../../../share/constants/search';
 import { WordArticle } from '../../components-server/WordArticle';
 
 const searchWords = async (searchValue: string) => {
     'use server';
 
-    if (searchValue.length < MINIMAL_SEARCH_VALUE_LENGTH) {
+    if (!searchValue) {
         return { words: [] };
     }
 

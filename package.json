@@ -30,6 +30,8 @@
         "openai": "^4.28.4",
         "react": "^18",
         "react-dom": "^18",
+        "react-infinite-scroller": "^1.2.6",
+        "react-use": "^17.5.0",
         "rss": "^1.2.2",
         "snoowrap": "^1.23.0",
         "twitter-api-v2": "^1.16.0"
@@ -41,6 +43,7 @@
         "@types/node-telegram-bot-api": "^0.64.2",
         "@types/react": "^18",
         "@types/react-dom": "^18",
+        "@types/react-infinite-scroller": "^1.2.5",
         "@types/rss": "^0.0.32",
         "autoprefixer": "^10.0.1",
         "eslint": "^8",

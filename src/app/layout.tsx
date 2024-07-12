@@ -27,7 +27,7 @@ export default function RootLayout({ children }: IRootLayoutProps) {
     return (
         <html lang={METADATA.language_code}>
             <body
-                className={`${inter.className} flex flex-col items-center min-h-screen pb-24`}
+                className={`${inter.className} flex flex-col items-center min-h-screen`}
             >
                 <Layout>{children}</Layout>
             </body>

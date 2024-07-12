@@ -43,7 +43,7 @@ export const MoreWords: React.FC<IMoreWordsProps> = ({ getMore }) => {
                 {nextWords}
             </InfiniteScroll>
             {isEnd && (
-                <div className="font-thunder-black text-9xl leading-1 text-main-red text-center pt-24 pb-12">
+                <div className="font-thunder-black text-9xl leading-1 text-main-red text-center pt-12 pb-12">
                     Ende.
                 </div>
             )}

@@ -213,6 +213,9 @@ html {
 body {
     color: theme('colors.main-black');
     background: theme('colors.main-black');
+    height: 100%;
+    height: 100vh;
+    height: 100dvh;
 }
 
 a,

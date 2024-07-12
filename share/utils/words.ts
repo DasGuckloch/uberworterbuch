@@ -5,6 +5,7 @@ import { CompileMDXResult, compileMDX } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 
 import {
+    TOO_LONG_WORDS,
     WORDS_FILE_EXTENSION,
     WORDS_FOLDER_NAME,
     WORDS_PER_PAGE,
@@ -133,6 +134,10 @@ export const compileWordMarkdown = async (
         source: markdown,
         options: { parseFrontmatter: true },
     });
+};
+
+export const isTooLongWord = (word: string): boolean => {
+    return TOO_LONG_WORDS.includes(word.toLowerCase());
 };
 
 const removeWordFileExtension = (wordFileName: string): string => {

@@ -35,7 +35,7 @@ export const MoreWords: React.FC<IMoreWordsProps> = ({ getMore }) => {
                 }}
                 hasMore={!isEnd}
                 loader={
-                    <div className="flex justify-center">
+                    <div className="flex justify-center" key={0}>
                         <Loader color={ColorEnum.MAIN_WHITE} />
                     </div>
                 }

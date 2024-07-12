@@ -4,6 +4,7 @@ import { RouteEnum } from '../../../share/enums/route';
 import { dayjs } from '../../../share//utils/dayjs';
 import {
     getRelativeLinkText,
+    isTooLongWord,
     wordNameToSlug,
 } from '../../../share/utils/words';
 import {
@@ -20,7 +21,11 @@ export const Word: React.FC<IWordProps> = async ({ word }) => {
     return (
         <section className="font-thunder bg-main-white border-4 border-main-white rounded-lg p-6">
             <section className="flex flex-col justify-between items-start gap-4 mdx-content">
-                <h1 className="outfit text-8xl hyphens-auto">
+                <h1
+                    className={`text-8xl hyphens-auto ${
+                        isTooLongWord(frontmatter.title) ? 'break-all' : ''
+                    }`}
+                >
                     <Link href={`/${RouteEnum.WORDS}/${slug}`}>
                         {frontmatter.title}
                     </Link>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { METADATA } from '../../../share/constants/metadata';
-import { getAllWords } from '../../../share/utils/words';
+import { getAllWords, isTooLongWord } from '../../../share/utils/words';
 import { sortGermanWordsByTitle } from '../../../share/utils/sorts';
 import { IWord } from '../../../share/interfaces/words';
 import { RouteEnum } from '../../../share/enums/route';
@@ -38,7 +38,13 @@ export default async function TOCPage() {
                                     <Link
                                         href={`/${RouteEnum.WORDS}/${word.slug}`}
                                         key={word.frontmatter.title}
-                                        className="font-thunder text-5xl text-main-white outfit hyphens-auto"
+                                        className={`font-thunder text-5xl text-main-white mb-6 hyphens-auto ${
+                                            isTooLongWord(
+                                                word.frontmatter.title
+                                            )
+                                                ? 'break-all'
+                                                : ''
+                                        }`}
                                     >
                                         {word.frontmatter.title}
                                     </Link>

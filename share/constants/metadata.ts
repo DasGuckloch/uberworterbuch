@@ -32,6 +32,12 @@ export const METADATA = {
         'Uberworterbuch',
         'Ueberwoerterbuch',
         'Uberdictionary',
+        'Slang',
+        'Germany slang',
+        'Deutscher Slang',
+        'Umgangssprache',
+        'Deutsche Umgangssprache',
+        'umgangssprachliches Deutsch',
     ],
     openGraph: {
         title: TITLE,

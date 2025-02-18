@@ -4,7 +4,7 @@ import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 import { usePostHog } from 'posthog-js/react';
 
-function PostHogPageView() {
+function PostHogPageView(): null {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const posthog = usePostHog();
@@ -14,7 +14,7 @@ function PostHogPageView() {
         if (pathname && posthog) {
             let url = window.origin + pathname;
             if (searchParams.toString()) {
-                url = url + '?' + searchParams.toString();
+                url = url + `?${searchParams.toString()}`;
             }
 
             posthog.capture('$pageview', { $current_url: url });
@@ -24,7 +24,7 @@ function PostHogPageView() {
     return null;
 }
 
-// Wrap this in Suspense to avoid the useSearchParams usage above
+// Wrap this in Suspense to avoid the `useSearchParams` usage above
 // from de-opting the whole app into client-side rendering
 // See: https://nextjs.org/docs/messages/deopted-into-client-rendering
 export default function SuspendedPostHogPageView() {

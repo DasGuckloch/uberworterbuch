@@ -6,6 +6,8 @@ import './globals.css';
 import { Layout } from '../components-server/Layout';
 import { METADATA } from '../../share/constants/metadata';
 
+import { PostHogProvider } from './providers';
+
 interface IRootLayoutProps {
     readonly children: React.ReactNode;
 }
@@ -27,7 +29,9 @@ export default function RootLayout({ children }: IRootLayoutProps) {
     return (
         <html lang={METADATA.language_code}>
             <body className={`${inter.className} flex flex-col items-center`}>
-                <Layout>{children}</Layout>
+                <PostHogProvider>
+                    <Layout>{children}</Layout>
+                </PostHogProvider>
             </body>
         </html>
     );

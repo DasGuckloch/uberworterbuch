@@ -28,6 +28,7 @@
         "next-mdx-remote": "^4.4.1",
         "node-telegram-bot-api": "^0.64.0",
         "openai": "^4.28.4",
+        "posthog-js": "^1.219.3",
         "react": "^18",
         "react-dom": "^18",
         "react-infinite-scroller": "^1.2.6",

@@ -33,7 +33,7 @@ export const Links = () => {
             </div>
             <Link
                 href={`/${RouteEnum.ABOUT}`}
-                className="font-thunder text-8xl text-main-white whitespace-nowrap pt-6 leading-2"
+                className="font-thunder text-8xl text-main-white whitespace-nowrap pt-6"
             >
                 Über uns
             </Link>

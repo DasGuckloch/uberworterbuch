@@ -1,6 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@config '../../tailwind.config.ts';
+
+/*
+  Tailwind CSS v4 dropped the `button { cursor: pointer }` rule that v3's
+  preflight added, so it is restored here to keep buttons feeling clickable.
+*/
+@layer base {
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+}
 
 @layer base {
     @font-face {

@@ -9,7 +9,8 @@ import { getAllWords, getWord } from '../../../../share/utils/words';
 import { IWordProps } from './interfaces';
 
 export default async function IWord({ params }: IWordProps) {
-    const word = await getWord(params.slug);
+    const { slug } = await params;
+    const word = await getWord(slug);
 
     return (
         <>
@@ -18,7 +19,7 @@ export default async function IWord({ params }: IWordProps) {
             </section>
             {word.frontmatter.video && (
                 <section className="mb-8 print:hidden">
-                    <Video word={word} />
+                    <Video video={word.frontmatter.video} />
                 </section>
             )}
         </>
@@ -34,7 +35,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
     params,
 }: IWordProps): Promise<Metadata> {
-    const { frontmatter, slug } = await getWord(params.slug);
+    const { slug: paramsSlug } = await params;
+    const { frontmatter, slug } = await getWord(paramsSlug);
 
     return {
         title: frontmatter.title,

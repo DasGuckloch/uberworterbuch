@@ -1,5 +1,5 @@
 export interface IWordProps {
-    readonly params: {
+    readonly params: Promise<{
         readonly slug: string;
-    };
+    }>;
 }

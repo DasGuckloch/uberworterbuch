@@ -34,7 +34,7 @@ export const Search: React.FC<ISearchProps> = ({ searchWords }) => {
     return (
         <section className="flex flex-col">
             <input
-                className="font-thunder-black bg-main-white border-4 border-main-white rounded-lg text-9xl w-full p-6 outline-none text-main-red"
+                className="font-thunder-black bg-main-white border-4 border-main-white rounded-lg text-9xl w-full p-6 outline-hidden text-main-red"
                 value={searchValue}
                 autoFocus
                 onChange={(event) => setSearchValue(event.target.value)}

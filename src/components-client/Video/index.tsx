@@ -1,5 +1,6 @@
 'use client';
 
+import { getVideoSrc } from './utils';
 import { IVideoProps } from './interfaces';
 
 export const Video: React.FC<IVideoProps> = ({ video }) => {
@@ -8,7 +9,7 @@ export const Video: React.FC<IVideoProps> = ({ video }) => {
             <iframe
                 width="100%"
                 height="395"
-                src={`${video}&amp;cc_lang_pref=de&cc_load_policy=1`}
+                src={getVideoSrc(video)}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen

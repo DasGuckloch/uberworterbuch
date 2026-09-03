@@ -6,6 +6,10 @@ import { getAllWords } from '../../../share/utils/words';
 import { DATE_FORMAT_MDX } from '../../../share/constants/date';
 import { dayjs } from '../../../share/utils/dayjs';
 
+// Route handlers default to dynamic since Next.js 15; the feed has no
+// request-time input, so keep it prerendered as it was before.
+export const dynamic = 'force-static';
+
 export async function GET() {
     const feed = new RSS({
         title: METADATA.title,

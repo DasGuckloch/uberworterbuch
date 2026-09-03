@@ -1,4 +1,4 @@
-import TelegramBot from 'node-telegram-bot-api';
+import { Api } from 'node-telegram-bot-api';
 
 import { wordNameToSlug } from '../../utils/words';
 import { IWord } from '../../interfaces/words';
@@ -6,7 +6,15 @@ import { trimTemplateString } from '../../utils/strings';
 import { generateTelegramTitle } from '../../utils/titles';
 import { CONFIG } from '../../config';
 
-const bot = new TelegramBot(CONFIG.telegram.botToken || '');
+// The v2 `Api` constructor rejects an empty token, so it is created on first
+// send instead of at import time.
+let api: Api | undefined;
+
+const getApi = (): Api => {
+    api ??= new Api(CONFIG.telegram.botToken || '');
+
+    return api;
+};
 
 const getTelegramNewWordMessage = (
     title: string,
@@ -24,13 +32,11 @@ export const sendTelegramNewWordMessage = async (words: IWord[]) => {
 
         console.info(`Send to Telegram the new word: ${title}`);
 
-        await bot.sendMessage(
-            CONFIG.telegram.channelId || '',
-            getTelegramNewWordMessage(title, slug, emoji),
-            {
-                parse_mode: 'Markdown',
-            }
-        );
+        await getApi().sendMessage({
+            chat_id: CONFIG.telegram.channelId || '',
+            text: getTelegramNewWordMessage(title, slug, emoji),
+            parse_mode: 'Markdown',
+        });
     }
 };
 
@@ -54,8 +60,10 @@ export const sendTelegramWeeklyNewWordsMessage = async (words: IWord[]) => {
 
     console.info(`Send to Telegram the weekly new words`);
 
-    await bot.sendMessage(CONFIG.telegram.channelId || '', message, {
+    await getApi().sendMessage({
+        chat_id: CONFIG.telegram.channelId || '',
+        text: message,
         parse_mode: 'Markdown',
-        disable_web_page_preview: true,
+        link_preview_options: { is_disabled: true },
     });
 };
